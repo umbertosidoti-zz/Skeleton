@@ -4,7 +4,7 @@ import com.umbo.skeleton.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
-class App : DaggerApplication() {
+class SkeletonApp : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
 

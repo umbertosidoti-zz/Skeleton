@@ -1,7 +1,7 @@
 package com.umbo.skeleton.di
 
 import android.app.Application
-import com.umbo.skeleton.App
+import com.umbo.skeleton.SkeletonApp
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -17,7 +17,7 @@ import javax.inject.Singleton
         ViewModelModule::class
     ]
 )
-interface AppComponent: AndroidInjector<App> {
+interface AppComponent: AndroidInjector<SkeletonApp> {
     @Component.Builder
     interface Builder {
         @BindsInstance
@@ -25,5 +25,5 @@ interface AppComponent: AndroidInjector<App> {
         fun build(): AppComponent
     }
 
-    override fun inject(app: App)
+    override fun inject(app: SkeletonApp)
 }
