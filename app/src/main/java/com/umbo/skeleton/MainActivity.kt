@@ -1,6 +1,5 @@
 package com.umbo.skeleton
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity
 
