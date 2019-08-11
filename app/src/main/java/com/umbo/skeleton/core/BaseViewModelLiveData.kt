@@ -11,7 +11,7 @@ abstract class BaseViewModelLiveData<T>(): ViewModel() {
         }
     }
 
-    protected fun start() {
+    protected open fun start() {
 
     }
 }
