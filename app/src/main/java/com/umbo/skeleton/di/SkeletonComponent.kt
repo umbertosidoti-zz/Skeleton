@@ -12,17 +12,17 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        AppModule::class,
+        SkeletonModule::class,
         ActivitiesModule::class,
         ViewModelModule::class
     ]
 )
-interface AppComponent: AndroidInjector<SkeletonApp> {
+interface SkeletonComponent: AndroidInjector<SkeletonApp> {
     @Component.Builder
     interface Builder {
         @BindsInstance
         fun application(application: Application): Builder
-        fun build(): AppComponent
+        fun build(): SkeletonComponent
     }
 
     override fun inject(app: SkeletonApp)

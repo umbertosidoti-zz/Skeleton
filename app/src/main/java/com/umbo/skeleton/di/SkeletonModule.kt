@@ -8,7 +8,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-internal object AppModule {
+internal object SkeletonModule {
     @Singleton
     @Provides
     @JvmStatic
