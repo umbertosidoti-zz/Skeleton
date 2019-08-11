@@ -16,9 +16,6 @@ class ListFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelWrapper: ViewModelProvidersWrapper
 
-    @Inject
-    lateinit var viewState: ListViewState
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +28,6 @@ class ListFragment : DaggerFragment() {
 
         val viewModel = viewModelWrapper.of(this).get(ListViewModel::class.java)
         viewModel.liveData.observe(viewLifecycleOwner,  Observer { state ->
-
         })
     }
 }

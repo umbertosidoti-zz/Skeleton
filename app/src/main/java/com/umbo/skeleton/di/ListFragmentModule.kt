@@ -1,7 +1,8 @@
 package com.umbo.skeleton.di
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import com.umbo.domain.ListInteractor
+import com.umbo.domain.ListInteractorImpl
 import com.umbo.skeleton.list.ListViewModel
 import com.umbo.skeleton.list.ListViewState
 import dagger.Binds
@@ -13,8 +14,7 @@ import dagger.multibindings.IntoMap
 class ListFragmentModule {
 
     @Provides
-    fun provideListViewState()= ListViewState("test")
-
+    fun provideListInteractor(): ListInteractor = ListInteractorImpl()
 
     @Module
     interface Bind {
