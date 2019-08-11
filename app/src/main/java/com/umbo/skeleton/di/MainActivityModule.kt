@@ -7,10 +7,6 @@ import dagger.Provides
 @Module(includes = [FragmentsModule::class])
 class MainActivityModule {
 
-    @Provides
-    @ActivityScope
-    fun provideViewModelProviderFactory(factory: ViewModelProvider.Factory): ViewModelProvidersWrapper {
-        return ViewModelProvidersWrapperImpl(factory)
-    }
+
 
 }

@@ -13,8 +13,7 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         SkeletonModule::class,
-        ActivitiesModule::class,
-        ViewModelFactoryModule::class
+        ActivitiesModule::class
     ]
 )
 interface SkeletonComponent: AndroidInjector<SkeletonApp> {
