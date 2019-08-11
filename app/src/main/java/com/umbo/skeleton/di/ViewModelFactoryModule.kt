@@ -11,7 +11,7 @@ import dagger.multibindings.IntoMap
 interface ViewModelFactoryModule {
 
     @Binds
-    fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    fun bindViewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory
 
     @Binds
     @IntoMap

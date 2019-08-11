@@ -4,9 +4,16 @@ import com.umbo.skeleton.list.ListViewState
 import dagger.Module
 import dagger.Provides
 
-@Module
+@Module(includes = [ListFragmentModule.Bind::class])
 class ListFragmentModule {
 
     @Provides
     fun provideListViewState()= ListViewState("test")
+
+
+    @Module
+    interface Bind {
+
+
+    }
 }
