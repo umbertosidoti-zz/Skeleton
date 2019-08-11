@@ -7,6 +7,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 interface FragmentsModule {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [ListFragmentModule::class])
     fun contributeWeatherFragment(): ListFragment
 }

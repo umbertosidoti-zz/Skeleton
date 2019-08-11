@@ -18,6 +18,9 @@ class ListFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var viewState: ListViewState
+
     private val viewModel: ListViewModel by lazy(LazyThreadSafetyMode.NONE) {
         ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
     }

@@ -16,5 +16,5 @@ interface ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(ListViewModel::class)
-    fun bindWeatherViewModel(weatherViewModel: ListViewModel): ViewModel
+    fun bindListViewModel(viewModel: ListViewModel): ViewModel
 }
