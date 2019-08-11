@@ -1,15 +1,16 @@
 package com.umbo.skeleton.di
 
-import androidx.appcompat.app.AppCompatActivity
-import com.umbo.skeleton.MainActivity
-import com.umbo.skeleton.list.ListFragment
-import dagger.Binds
+import androidx.lifecycle.ViewModelProvider
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
+import dagger.Provides
 
 @Module(includes = [FragmentsModule::class])
-interface MainActivityModule {
-    @Binds
-    fun bindAppCompatActivity(mainActivity: MainActivity): AppCompatActivity
+class MainActivityModule {
+
+    @Provides
+    @ActivityScope
+    fun provideViewModelProviderFactory(factory: ViewModelProvider.Factory): ViewModelProvidersFactory {
+        return ViewModelProvidersFactoryImpl(factory)
+    }
 
 }

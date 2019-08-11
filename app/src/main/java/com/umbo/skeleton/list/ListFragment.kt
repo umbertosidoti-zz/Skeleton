@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.umbo.skeleton.R
+import com.umbo.skeleton.di.ViewModelProvidersFactory
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -16,14 +17,10 @@ import javax.inject.Inject
 class ListFragment : DaggerFragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModelFactory: ViewModelProvidersFactory
 
     @Inject
     lateinit var viewState: ListViewState
-
-    private val viewModel: ListViewModel by lazy(LazyThreadSafetyMode.NONE) {
-        ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +31,8 @@ class ListFragment : DaggerFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        val viewModel = viewModelFactory.of(this).get(ListViewModel::class.java)
         viewModel.liveData.observe(viewLifecycleOwner,  Observer { state ->
 
         })
