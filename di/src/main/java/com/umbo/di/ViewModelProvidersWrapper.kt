@@ -1,4 +1,4 @@
-package com.umbo.skeleton.di
+package com.umbo.di
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,7 +10,8 @@ interface ViewModelProvidersWrapper {
     fun of(fragment: Fragment): ViewModelProvider
 }
 
-class ViewModelProvidersWrapperImpl(private val factory: ViewModelProvider.Factory): ViewModelProvidersWrapper {
+class ViewModelProvidersWrapperImpl(private val factory: ViewModelProvider.Factory):
+    ViewModelProvidersWrapper {
 
     override fun of(fragment: Fragment): ViewModelProvider {
         return ViewModelProviders.of(fragment, factory)

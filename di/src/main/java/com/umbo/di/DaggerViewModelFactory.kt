@@ -1,4 +1,4 @@
-package com.umbo.skeleton.di
+package com.umbo.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

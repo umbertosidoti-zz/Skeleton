@@ -1,6 +1,8 @@
 package com.umbo.skeleton.di
 
 import android.app.Application
+import com.umbo.di.RetrofitModule
+import com.umbo.di.ViewModelFactoryModule
 import com.umbo.skeleton.SkeletonApp
 import dagger.BindsInstance
 import dagger.Component
@@ -13,6 +15,7 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         SkeletonModule::class,
+        RetrofitModule::class,
         ActivitiesModule::class,
         ViewModelFactoryModule::class
     ]

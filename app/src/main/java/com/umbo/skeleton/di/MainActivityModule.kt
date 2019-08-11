@@ -1,15 +1,11 @@
 package com.umbo.skeleton.di
 
-import androidx.lifecycle.ViewModelProvider
+import com.umbo.di.ProviderFactoryWrapper
 import dagger.Module
-import dagger.Provides
 
-@Module(includes = [FragmentsModule::class])
+@Module(includes = [
+    ProviderFactoryWrapper::class,
+    FragmentsModule::class])
 class MainActivityModule {
-
-    @Provides
-    fun provideViewModelProviderFactory(factory: ViewModelProvider.Factory): ViewModelProvidersWrapper {
-        return ViewModelProvidersWrapperImpl(factory)
-    }
 
 }

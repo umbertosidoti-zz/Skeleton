@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.umbo.skeleton.R
-import com.umbo.skeleton.di.ViewModelProvidersWrapper
+import com.umbo.di.ViewModelProvidersWrapper
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 

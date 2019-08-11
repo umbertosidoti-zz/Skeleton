@@ -1,6 +1,7 @@
-package com.umbo.skeleton.di
+package com.umbo.di
 
 import androidx.lifecycle.ViewModelProvider
+import com.umbo.di.DaggerViewModelFactory
 import dagger.Binds
 import dagger.Module
 

@@ -1,5 +1,6 @@
 package com.umbo.skeleton.di
 
+import com.umbo.di.scope.ActivityScope
 import com.umbo.skeleton.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

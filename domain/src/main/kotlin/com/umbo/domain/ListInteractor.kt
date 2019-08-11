@@ -1,7 +1,7 @@
 package com.umbo.domain
 
-import com.umbo.data.Car
+import com.umbo.data.Post
 
 interface ListInteractor {
-    val cars: List<Car>?
+    suspend fun posts(): List<Post>?
 }

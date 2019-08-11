@@ -1,7 +1,10 @@
 package com.umbo.domain
 
-import com.umbo.data.Car
+import com.umbo.data.NetworkRepo
+import com.umbo.data.Post
 
-class ListInteractorImpl: ListInteractor {
-    override val cars: List<Car>? = emptyList()
+class ListInteractorImpl(private val repo: NetworkRepo) : ListInteractor {
+    override suspend fun posts(): List<Post>? {
+        return repo.posts()
+    }
 }
