@@ -1,7 +1,8 @@
 package com.umbo.skeleton.list
 
-import androidx.lifecycle.ViewModel;
+import com.umbo.skeleton.core.BaseViewModelLiveData
+import javax.inject.Inject
 
-class ListViewModel : ViewModel() {
+class ListViewModel @Inject constructor(): BaseViewModelLiveData<ListViewState>() {
     // TODO: Implement the ViewModel
 }
