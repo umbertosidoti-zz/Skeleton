@@ -7,12 +7,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module
+@Module(includes = [FragmentsModule::class])
 interface MainActivityModule {
     @Binds
     fun bindAppCompatActivity(mainActivity: MainActivity): AppCompatActivity
-
-    @ContributesAndroidInjector
-    fun contributeWeatherFragment(): ListFragment
 
 }
