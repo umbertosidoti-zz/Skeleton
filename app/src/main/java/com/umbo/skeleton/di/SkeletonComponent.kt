@@ -14,7 +14,7 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         SkeletonModule::class,
         ActivitiesModule::class,
-        ViewModelModule::class
+        ViewModelFactoryModule::class
     ]
 )
 interface SkeletonComponent: AndroidInjector<SkeletonApp> {

@@ -9,8 +9,8 @@ class MainActivityModule {
 
     @Provides
     @ActivityScope
-    fun provideViewModelProviderFactory(factory: ViewModelProvider.Factory): ViewModelProvidersFactory {
-        return ViewModelProvidersFactoryImpl(factory)
+    fun provideViewModelProviderFactory(factory: ViewModelProvider.Factory): ViewModelProvidersWrapper {
+        return ViewModelProvidersWrapperImpl(factory)
     }
 
 }

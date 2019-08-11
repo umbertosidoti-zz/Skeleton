@@ -5,12 +5,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
-interface ViewModelProvidersFactory {
+interface ViewModelProvidersWrapper {
     fun of(activity: AppCompatActivity): ViewModelProvider
     fun of(fragment: Fragment): ViewModelProvider
 }
 
-class ViewModelProvidersFactoryImpl(private val factory: ViewModelProvider.Factory): ViewModelProvidersFactory {
+class ViewModelProvidersWrapperImpl(private val factory: ViewModelProvider.Factory): ViewModelProvidersWrapper {
 
     override fun of(fragment: Fragment): ViewModelProvider {
         return ViewModelProviders.of(fragment, factory)
