@@ -1,10 +1,10 @@
 package com.umbo.domain
 
 import com.umbo.data.NetworkRepo
-import com.umbo.data.Post
+import com.umbo.data.Photo
 
 class ListInteractorImpl(private val repo: NetworkRepo) : ListInteractor {
-    override suspend fun posts(): List<Post>? {
-        return repo.posts()
+    override suspend fun photos(): List<Photo>? {
+        return repo.photos()
     }
 }

@@ -7,6 +7,7 @@ import com.umbo.di.scope.FragmentScope
 import com.umbo.domain.ListInteractor
 import com.umbo.domain.ListInteractorImpl
 import com.umbo.skeleton.list.ListViewModel
+import com.umbo.skeleton.list.PostToViewStateMapper
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -18,6 +19,9 @@ class ListFragmentModule {
     @Provides
     @FragmentScope
     fun provideListInteractor(networkRepo: NetworkRepo): ListInteractor = ListInteractorImpl(networkRepo)
+
+    @Provides
+    fun providePostToViewStateMapper() = PostToViewStateMapper()
 
     @Module
     interface Bind {

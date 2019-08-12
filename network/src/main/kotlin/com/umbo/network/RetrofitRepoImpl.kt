@@ -1,17 +1,17 @@
 package com.umbo.network
 
 import com.umbo.data.NetworkRepo
-import com.umbo.data.Post
+import com.umbo.data.Photo
 
 class RetrofitRepoImpl(private val service: RetrofitService) : NetworkRepo {
 
-    override suspend fun posts(): List<Post> {
-        val mapper = NetworkPostToPostMapper()
-        val response = service.getPosts()
+    override suspend fun photos(): List<Photo>? {
+        val mapper = NetworkPhotoToPhotoMapper()
+        val response = service.getPhotos()
         return if (response.isSuccessful) {
-            response.body()?.map { mapper.map(it) } ?: emptyList()
+            response.body()?.mapNotNull { mapper.map(it) } ?: emptyList()
         } else {
-            emptyList<Post>()
+            null
         }
     }
 }

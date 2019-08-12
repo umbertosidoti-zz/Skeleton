@@ -1,5 +1,5 @@
 package com.umbo.data
 
 interface NetworkRepo {
-    suspend fun posts(): List<Post>
+    suspend fun photos(): List<Photo>?
 }
