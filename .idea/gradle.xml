@@ -14,7 +14,7 @@
             <option value="$PROJECT_DIR$/di" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/glide_image_loader" />
-            <option value="$PROJECT_DIR$/network" />
+            <option value="$PROJECT_DIR$/retrofit_network" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
