@@ -3,7 +3,6 @@ package com.umbo.skeleton.list
 import com.umbo.data.Destination
 import com.umbo.data.NavigationCommand
 import com.umbo.domain.ListInteractor
-import com.umbo.data.Router
 import com.umbo.skeleton.core.BaseViewModelLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

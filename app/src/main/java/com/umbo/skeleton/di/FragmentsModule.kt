@@ -14,6 +14,6 @@ interface FragmentsModule {
     fun contributeListFragmentt(): ListFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [ListFragmentModule::class])
+    @ContributesAndroidInjector(modules = [DetailFragmentModule::class])
     fun contributeDetailFragment(): DetailFragment
 }

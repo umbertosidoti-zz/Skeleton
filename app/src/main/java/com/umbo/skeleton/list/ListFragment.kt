@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.umbo.di.ViewModelProvidersWrapper
 import com.umbo.skeleton.R
+import com.umbo.skeleton.core.HasRouter
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
@@ -48,8 +49,9 @@ class ListFragment : DaggerFragment() {
         })
 
         viewModel.navigationAction.observe(viewLifecycleOwner, Observer { action ->
-            val id = action.payload as? Int
-            Toast.makeText(context, "Navigate do photo $id", Toast.LENGTH_SHORT).show()
+            (action.payload as? Int)?.let {
+                (activity as? HasRouter)?.router?.routeToDetail(it)
+            }
         })
     }
 }
