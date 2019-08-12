@@ -1,6 +1,7 @@
 package com.umbo.skeleton.di
 
 import com.umbo.di.scope.FragmentScope
+import com.umbo.skeleton.detail.DetailFragment
 import com.umbo.skeleton.list.ListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -10,5 +11,9 @@ interface FragmentsModule {
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [ListFragmentModule::class])
-    fun contributeWeatherFragment(): ListFragment
+    fun contributeListFragmentt(): ListFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [ListFragmentModule::class])
+    fun contributeDetailFragment(): DetailFragment
 }

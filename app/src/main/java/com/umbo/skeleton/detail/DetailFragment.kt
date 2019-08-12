@@ -1,18 +1,18 @@
 package com.umbo.skeleton.detail
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import com.umbo.di.ViewModelProvidersWrapper
 import com.umbo.skeleton.R
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 class DetailFragment : DaggerFragment() {
 
-    private lateinit var viewModel: DetailViewModel
+    @Inject
+    lateinit var viewModelWrapper: ViewModelProvidersWrapper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +23,8 @@ class DetailFragment : DaggerFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+        val viewModel = viewModelWrapper.of(this).get(DetailViewModel::class.java)
+
         // TODO: Use the ViewModel
     }
 

@@ -1,7 +1,12 @@
 package com.umbo.skeleton.detail
 
-import androidx.lifecycle.ViewModel;
+import com.umbo.domain.DetailInteractor
+import com.umbo.skeleton.core.BaseViewModelLiveData
+import javax.inject.Inject
 
-class DetailViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class DetailViewModel @Inject constructor(private val interactor: DetailInteractor) : BaseViewModelLiveData<DetailViewState>() {
+
+    override fun start() {
+
+    }
 }
