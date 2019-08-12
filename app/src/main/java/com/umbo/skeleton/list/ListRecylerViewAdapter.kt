@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.list_recyclerview_item.view.*
 class ListRecylerViewAdapter(private val imageLoader: ImageLoader) : RecyclerView.Adapter<ListRecylerViewAdapter.ListAdapterViewHolder>() {
 
     private val photos: MutableList<PhotoViewState> = mutableListOf()
+    var onItemClick: ((Int) -> Unit)? = null
 
     fun addPhotos(photos: List<PhotoViewState>){
         this.photos.clear()
@@ -39,8 +40,13 @@ class ListRecylerViewAdapter(private val imageLoader: ImageLoader) : RecyclerVie
         }
     }
 
-    class ListAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ListAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val icon: ImageView = itemView.listItemIcon
         val title: TextView = itemView.listItemTitle
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(photos[adapterPosition].id)
+            }
+        }
     }
 }

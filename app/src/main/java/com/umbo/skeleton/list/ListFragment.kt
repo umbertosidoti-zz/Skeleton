@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.umbo.di.ViewModelProvidersWrapper
@@ -31,15 +32,24 @@ class ListFragment : DaggerFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
         listRecyclerView.layoutManager = LinearLayoutManager(context)
         listRecyclerView.adapter = adapter
 
         val viewModel = viewModelWrapper.of(this).get(ListViewModel::class.java)
-        viewModel.liveData.observe(viewLifecycleOwner,  Observer { state ->
-            if(!state.error){
+
+        adapter.onItemClick = {
+            viewModel.onItemClick(it)
+        }
+
+        viewModel.liveData.observe(viewLifecycleOwner, Observer { state ->
+            if (!state.error) {
                 adapter.addPhotos(state.photos)
             }
+        })
+
+        viewModel.navigationAction.observe(viewLifecycleOwner, Observer { action ->
+            val id = action.payload as? Int
+            Toast.makeText(context, "Navigate do photo $id", Toast.LENGTH_SHORT).show()
         })
     }
 }
