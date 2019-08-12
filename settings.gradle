@@ -1,1 +1,1 @@
-include ':app', ':domain', ':data', ':network', ':di'
+include ':app', ':domain', ':data', ':network', ':di', ':data_android', ':glide_image_loader'

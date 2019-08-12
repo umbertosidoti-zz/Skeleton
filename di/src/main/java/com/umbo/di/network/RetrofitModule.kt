@@ -1,4 +1,4 @@
-package com.umbo.di
+package com.umbo.di.network
 
 import com.umbo.data.NetworkRepo
 import com.umbo.network.RetrofitRepoImpl

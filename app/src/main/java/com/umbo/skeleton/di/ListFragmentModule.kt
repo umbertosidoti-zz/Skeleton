@@ -2,10 +2,12 @@ package com.umbo.skeleton.di
 
 import androidx.lifecycle.ViewModel
 import com.umbo.data.NetworkRepo
+import com.umbo.data_android.ImageLoader
 import com.umbo.di.ViewModelKey
 import com.umbo.di.scope.FragmentScope
 import com.umbo.domain.ListInteractor
 import com.umbo.domain.ListInteractorImpl
+import com.umbo.skeleton.list.ListRecylerViewAdapter
 import com.umbo.skeleton.list.ListViewModel
 import com.umbo.skeleton.list.PostToViewStateMapper
 import dagger.Binds
@@ -22,6 +24,9 @@ class ListFragmentModule {
 
     @Provides
     fun providePostToViewStateMapper() = PostToViewStateMapper()
+
+    @Provides
+    fun provideListRecylerViewAdapter(imageLoader: ImageLoader) = ListRecylerViewAdapter(imageLoader)
 
     @Module
     interface Bind {
