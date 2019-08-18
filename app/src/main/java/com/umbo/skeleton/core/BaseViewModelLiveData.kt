@@ -3,8 +3,9 @@ package com.umbo.skeleton.core
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.umbo.data.NavigationCommand
+import java.io.Serializable
 
-abstract class BaseViewModelLiveData<T>(): ViewModel() {
+abstract class BaseViewModelLiveData<T>() : ViewModel() {
 
     val liveData: MutableLiveData<T> by lazy {
         MutableLiveData<T>().also {
