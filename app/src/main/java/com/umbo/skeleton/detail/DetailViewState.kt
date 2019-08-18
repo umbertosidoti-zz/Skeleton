@@ -1,4 +1,3 @@
 package com.umbo.skeleton.detail
 
-class DetailViewState {
-}
+class DetailViewState (val title: String, val url: String, val album: String)

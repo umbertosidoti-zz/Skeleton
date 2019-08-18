@@ -6,6 +6,8 @@ import javax.inject.Inject
 
 class DetailViewModel @Inject constructor(private val interactor: DetailInteractor) : BaseViewModelLiveData<DetailViewState>() {
 
+    var payload: Int? = null
+
     override fun start() {
 
     }
