@@ -1,11 +1,13 @@
 package com.umbo.skeleton.list
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.umbo.skeleton.R
 import com.umbo.skeleton.core.BaseFragment
 import com.umbo.skeleton.core.HasRouter
+import com.umbo.skeleton.core.toVisibility
 import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
 
@@ -31,9 +33,9 @@ class ListFragment : BaseFragment() {
         }
 
         viewModel.liveData.observe(viewLifecycleOwner, Observer { state ->
-            if (!state.error) {
-                adapter.addPhotos(state.photos)
-            }
+            listLoading.visibility = View.GONE
+            listError.visibility = state.error.toVisibility()
+            adapter.addPhotos(state.photos)
         })
 
         viewModel.navigationAction.observe(viewLifecycleOwner, Observer { action ->
