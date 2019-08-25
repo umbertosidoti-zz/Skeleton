@@ -26,7 +26,7 @@ class ListViewModel @Inject constructor(
     }
 
     fun onItemClick(id: Int) {
-        interactor.cachedPhotos?.filter { it.id == id }?.let {
+        interactor.cachedPhotos.find { it.id == id }?.let {
             navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
         }
     }
