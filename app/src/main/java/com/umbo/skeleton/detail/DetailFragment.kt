@@ -30,5 +30,4 @@ class DetailFragment : BaseFragment() {
             detailAlbum.text = viewState.album
         })
     }
-
 }
