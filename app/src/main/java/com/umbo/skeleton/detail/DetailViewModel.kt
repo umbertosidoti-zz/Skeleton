@@ -16,7 +16,11 @@ class DetailViewModel @Inject constructor(private val interactor: DetailInteract
             payload?.let {
                 val photo = interactor.findPhoto(it)
                 photo?.let {storedPhoto ->
-                    liveData.postValue(DetailViewState(storedPhoto.title, storedPhoto.url, storedPhoto.albumId.toString()))
+                    liveData.postValue(DetailViewState(
+                        storedPhoto.title,
+                        storedPhoto.url,
+                        storedPhoto.albumId.toString()
+                    ))
                 }
             }
         }

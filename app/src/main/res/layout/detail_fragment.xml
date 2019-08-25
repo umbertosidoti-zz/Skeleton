@@ -5,7 +5,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".detail.DetailFragment">
+        tools:context=".detail.DetailFragment"
+        android:padding="8dp">
 
     <ImageView
             android:id="@+id/detailImage"
