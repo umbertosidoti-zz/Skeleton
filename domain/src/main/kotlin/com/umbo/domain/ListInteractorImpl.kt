@@ -6,7 +6,7 @@ class ListInteractorImpl(
     private val repository: PhotosRepository
 ) : ListInteractor {
 
-    override fun clearData() {
+    override suspend fun clearData() {
         repository.invalidateCachedData()
     }
 

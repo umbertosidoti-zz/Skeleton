@@ -8,7 +8,7 @@ class PhotosRepositoryImpl(
     private val storage: PhotosStorage
 ): PhotosRepository {
 
-    override fun invalidateCachedData() {
+    override suspend fun invalidateCachedData() {
         storage.clearData()
     }
 

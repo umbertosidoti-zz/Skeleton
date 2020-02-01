@@ -14,8 +14,8 @@ class ListViewModel @Inject constructor(
     private val postToViewStateMapper: PostToViewStateMapper): BaseViewModelLiveData<ListViewState>() {
 
     override fun start() {
-        interactor.clearData()
         CoroutineScope(Dispatchers.IO).launch {
+            interactor.clearData()
             val result = interactor.photos()?.map { postToViewStateMapper.map(it) }
             val viewState = if(result != null) {
                 ListViewState(false, result)
