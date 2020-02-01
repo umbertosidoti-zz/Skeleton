@@ -19,7 +19,7 @@ class DetailViewModel @Inject constructor(private val interactor: DetailInteract
         CoroutineScope(Dispatchers.IO).launch {
             payload?.let {
                 when (val outcome = interactor.findPhoto(it)) {
-                    is Outcome.Success<Photo> -> liveData.postValue(
+                    is Outcome.Success -> liveData.postValue(
                         ViewStateOutcome.Success(
                             DetailViewState(
                                 outcome.value.title,

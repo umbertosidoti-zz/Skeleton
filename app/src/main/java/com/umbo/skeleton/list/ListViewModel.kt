@@ -21,7 +21,7 @@ class ListViewModel @Inject constructor(
             interactor.clearData()
 
             val viewState = when (val result = interactor.photos()){
-                is Outcome.Success<List<Photo>> -> ViewStateOutcome.Success(result.value.map { postToViewStateMapper.map(it) })
+                is Outcome.Success -> ViewStateOutcome.Success(result.value.map { postToViewStateMapper.map(it) })
                 is Outcome.Error -> ViewStateOutcome.Error("error")
             }
 
@@ -31,7 +31,7 @@ class ListViewModel @Inject constructor(
 
     fun onItemClick(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val photoId = (interactor.photos() as? Outcome.Success<List<Photo>>)?.value?.find { it.id == id}
+            val photoId = (interactor.photos() as? Outcome.Success)?.value?.find { it.id == id}
             if(photoId != null) {
                 navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
             } else {

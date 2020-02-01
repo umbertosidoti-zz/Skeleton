@@ -15,7 +15,7 @@ class PhotosRepositoryImpl(
 
     override suspend fun photos():  Outcome<List<Photo>> {
         val result = storage.photos
-        val cachedPhotos = (result as? Outcome.Success<List<Photo>>)?.value
+        val cachedPhotos = (result as? Outcome.Success)?.value
 
         return if (cachedPhotos.isNullOrEmpty()){
             networkService.photos()

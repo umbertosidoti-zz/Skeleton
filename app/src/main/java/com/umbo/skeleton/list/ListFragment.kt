@@ -35,7 +35,7 @@ class ListFragment : BaseFragment() {
 
         viewModel.liveData.observe(viewLifecycleOwner, Observer { state ->
             when(state) {
-                is ViewStateOutcome.Success<List<PhotoViewState>> -> handleSuccessState(state.value)
+                is ViewStateOutcome.Success -> handleSuccessState(state.value)
                 is ViewStateOutcome.Error -> handleError()
             }
         })

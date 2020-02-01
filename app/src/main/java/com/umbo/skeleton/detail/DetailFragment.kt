@@ -28,7 +28,7 @@ class DetailFragment : BaseFragment() {
         viewModel.liveData.observe(viewLifecycleOwner, Observer { outcome ->
 
             when(outcome) {
-                is ViewStateOutcome.Success<DetailViewState> -> handleSuccess(outcome.value)
+                is ViewStateOutcome.Success -> handleSuccess(outcome.value)
                 is ViewStateOutcome.Error -> handleError()
             }
 
