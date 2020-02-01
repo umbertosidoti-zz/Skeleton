@@ -15,21 +15,16 @@ import javax.inject.Singleton
 @Module
 object RetrofitModule {
 
-    @Provides
-    @JvmStatic
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .readTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .build()
-    }
-
     @Singleton
     @Provides
     @JvmStatic
-    fun provideRetrofitRepo(client: OkHttpClient): NetworkService {
+    fun provideRetrofitRepo(): NetworkService {
         val service = Retrofit.Builder()
-            .client(client)
+            .client(
+                OkHttpClient.Builder()
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .build())
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build().create(RetrofitService::class.java)
