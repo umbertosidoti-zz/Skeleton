@@ -10,7 +10,7 @@ class ListInteractorImpl(
         repository.invalidateCachedData()
     }
 
-    override suspend fun photos(): List<Photo>? {
+    override suspend fun photos(): List<Photo> {
         return repository.photos()
     }
 }

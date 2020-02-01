@@ -4,5 +4,5 @@ import com.umbo.data.Photo
 
 interface ListInteractor {
     suspend fun clearData()
-    suspend fun photos(): List<Photo>?
+    suspend fun photos(): List<Photo>
 }
