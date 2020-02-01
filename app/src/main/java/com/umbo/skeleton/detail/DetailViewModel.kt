@@ -1,17 +1,15 @@
 package com.umbo.skeleton.detail
 
 import com.umbo.data.Outcome
-import com.umbo.data.Photo
 import com.umbo.domain.DetailInteractor
 import com.umbo.skeleton.core.BaseViewModelLiveData
-import com.umbo.skeleton.core.ViewStateOutcome
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailViewModel @Inject constructor(private val interactor: DetailInteractor) :
-    BaseViewModelLiveData<ViewStateOutcome<DetailViewState>>() {
+    BaseViewModelLiveData<Outcome<DetailViewState>>() {
 
     var payload: Int? = null
 
@@ -20,7 +18,7 @@ class DetailViewModel @Inject constructor(private val interactor: DetailInteract
             payload?.let {
                 when (val outcome = interactor.findPhoto(it)) {
                     is Outcome.Success -> liveData.postValue(
-                        ViewStateOutcome.Success(
+                        Outcome.Success(
                             DetailViewState(
                                 outcome.value.title,
                                 outcome.value.url,
@@ -28,7 +26,7 @@ class DetailViewModel @Inject constructor(private val interactor: DetailInteract
                             )
                         )
                     )
-                    is Outcome.Error -> liveData.postValue(ViewStateOutcome.Error("error"))
+                    is Outcome.Error -> liveData.postValue(Outcome.Error("error"))
                 }
             }
         }

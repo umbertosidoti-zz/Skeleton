@@ -3,10 +3,8 @@ package com.umbo.skeleton.list
 import com.umbo.data.Destination
 import com.umbo.data.NavigationCommand
 import com.umbo.data.Outcome
-import com.umbo.data.Photo
 import com.umbo.domain.ListInteractor
 import com.umbo.skeleton.core.BaseViewModelLiveData
-import com.umbo.skeleton.core.ViewStateOutcome
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,15 +12,15 @@ import javax.inject.Inject
 
 class ListViewModel @Inject constructor(
     private val interactor: ListInteractor,
-    private val postToViewStateMapper: PostToViewStateMapper): BaseViewModelLiveData<ViewStateOutcome<List<PhotoViewState>>>() {
+    private val postToViewStateMapper: PostToViewStateMapper): BaseViewModelLiveData<Outcome<List<PhotoViewState>>>() {
 
     override fun start() {
         CoroutineScope(Dispatchers.IO).launch {
             interactor.clearData()
 
             val viewState = when (val result = interactor.photos()){
-                is Outcome.Success -> ViewStateOutcome.Success(result.value.map { postToViewStateMapper.map(it) })
-                is Outcome.Error -> ViewStateOutcome.Error("error")
+                is Outcome.Success -> Outcome.Success(result.value.map { postToViewStateMapper.map(it) })
+                is Outcome.Error -> Outcome.Error("error")
             }
 
             liveData.postValue(viewState)
@@ -35,7 +33,7 @@ class ListViewModel @Inject constructor(
             if(photoId != null) {
                 navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
             } else {
-                ViewStateOutcome.Error("error")
+                Outcome.Error("error")
             }
         }
     }

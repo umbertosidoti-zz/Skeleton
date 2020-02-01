@@ -8,7 +8,6 @@ import com.umbo.data.Outcome
 import com.umbo.skeleton.R
 import com.umbo.skeleton.core.BaseFragment
 import com.umbo.skeleton.core.HasRouter
-import com.umbo.skeleton.core.ViewStateOutcome
 import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
 
@@ -33,10 +32,10 @@ class ListFragment : BaseFragment() {
             viewModel.onItemClick(it)
         }
 
-        viewModel.liveData.observe(viewLifecycleOwner, Observer { state ->
-            when(state) {
-                is ViewStateOutcome.Success -> handleSuccessState(state.value)
-                is ViewStateOutcome.Error -> handleError()
+        viewModel.liveData.observe(viewLifecycleOwner, Observer { outcome ->
+            when(outcome) {
+                is Outcome.Success -> handleSuccessState(outcome.value)
+                is Outcome.Error -> handleError()
             }
         })
 
