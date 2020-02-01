@@ -14,8 +14,9 @@ class ListViewModel @Inject constructor(
     private val postToViewStateMapper: PostToViewStateMapper): BaseViewModelLiveData<ListViewState>() {
 
     override fun start() {
+        interactor.clearData()
         CoroutineScope(Dispatchers.IO).launch {
-            val result = interactor.fetchPhotos()?.map { postToViewStateMapper.map(it) }
+            val result = interactor.photos()?.map { postToViewStateMapper.map(it) }
             val viewState = if(result != null) {
                 ListViewState(false, result)
             } else {
@@ -26,8 +27,10 @@ class ListViewModel @Inject constructor(
     }
 
     fun onItemClick(id: Int) {
-        interactor.cachedPhotos.find { it.id == id }?.let {
-            navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
+        CoroutineScope(Dispatchers.IO).launch {
+            interactor.photos()?.find { it.id == id }?.let {
+                navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
+            }
         }
     }
 }

@@ -1,13 +1,11 @@
 package com.umbo.skeleton.di
 
 import androidx.lifecycle.ViewModel
-import com.umbo.data.NetworkRepo
+import com.umbo.data.NetworkRepository
 import com.umbo.data_android.ImageLoader
 import com.umbo.di.ViewModelKey
 import com.umbo.di.scope.FragmentScope
-import com.umbo.domain.ListInteractor
-import com.umbo.domain.ListInteractorImpl
-import com.umbo.domain.PhotosStorage
+import com.umbo.domain.*
 import com.umbo.skeleton.list.ListRecylerViewAdapter
 import com.umbo.skeleton.list.ListViewModel
 import com.umbo.skeleton.list.PostToViewStateMapper
@@ -21,8 +19,8 @@ class ListFragmentModule {
 
     @Provides
     @FragmentScope
-    fun provideListInteractor(networkRepo: NetworkRepo, storage: PhotosStorage)
-            : ListInteractor = ListInteractorImpl(networkRepo, storage)
+    fun provideListInteractor(repository: PhotosRepository)
+            : ListInteractor = ListInteractorImpl(repository)
 
     @Provides
     fun providePostToViewStateMapper() = PostToViewStateMapper()

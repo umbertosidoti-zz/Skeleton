@@ -1,9 +1,9 @@
 package com.umbo.network
 
-import com.umbo.data.NetworkRepo
+import com.umbo.data.NetworkRepository
 import com.umbo.data.Photo
 
-class RetrofitRepoImpl(private val service: RetrofitService) : NetworkRepo {
+class RetrofitRepositoryImpl(private val service: RetrofitService) : NetworkRepository {
 
     override suspend fun photos(): List<Photo>? {
         val mapper = NetworkPhotoToPhotoMapper()

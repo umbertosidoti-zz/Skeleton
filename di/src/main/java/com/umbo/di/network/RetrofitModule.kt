@@ -1,7 +1,7 @@
 package com.umbo.di.network
 
-import com.umbo.data.NetworkRepo
-import com.umbo.network.RetrofitRepoImpl
+import com.umbo.data.NetworkRepository
+import com.umbo.network.RetrofitRepositoryImpl
 import com.umbo.network.RetrofitService
 import com.umbo.network.RetrofitService.Companion.BASE_URL
 import dagger.Module
@@ -16,12 +16,12 @@ object RetrofitModule {
     @Singleton
     @Provides
     @JvmStatic
-    fun provideRetrofitRepo(): NetworkRepo {
+    fun provideRetrofitRepo(): NetworkRepository {
         val service = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build().create(RetrofitService::class.java)
 
-        return RetrofitRepoImpl(service)
+        return RetrofitRepositoryImpl(service)
     }
 }

@@ -1,20 +1,16 @@
 package com.umbo.domain
 
-import com.umbo.data.NetworkRepo
 import com.umbo.data.Photo
 
 class ListInteractorImpl(
-    private val repo: NetworkRepo,
-    private val photosStorage: PhotosStorage
+    private val repository: PhotosRepository
 ) : ListInteractor {
 
-    override val cachedPhotos: List<Photo>
-        get() = photosStorage.photos
+    override fun clearData() {
+        repository.invalidateCachedData()
+    }
 
-    override suspend fun fetchPhotos(): List<Photo>? {
-        val photos = repo.photos()
-        return photos?.also {
-            photosStorage.replacePhotos(it)
-        }
+    override suspend fun photos(): List<Photo>? {
+        return repository.photos()
     }
 }

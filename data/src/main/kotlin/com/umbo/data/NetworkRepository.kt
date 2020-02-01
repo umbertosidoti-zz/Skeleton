@@ -1,5 +1,5 @@
 package com.umbo.data
 
-interface NetworkRepo {
+interface NetworkRepository {
     suspend fun photos(): List<Photo>?
 }

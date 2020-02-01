@@ -15,7 +15,7 @@ class DetailFragmentModule {
 
     @Provides
     @FragmentScope
-    fun provideDetailInteractor(storage: PhotosStorage): DetailInteractor = DetailInteractorImpl(storage)
+    fun provideDetailInteractor(photosRepository: PhotosRepository): DetailInteractor = DetailInteractorImpl(photosRepository)
 
     @Module
     interface Bind {

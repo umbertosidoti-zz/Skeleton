@@ -2,9 +2,9 @@ package com.umbo.domain
 
 import com.umbo.data.Photo
 
-class DetailInteractorImpl(private val photosStorage: PhotosStorage): DetailInteractor {
+class DetailInteractorImpl(private val photosRepository: PhotosRepository): DetailInteractor {
 
-    override fun findPhoto(id: Int): Photo? {
-        return photosStorage.photos.find { id == it.id }
+    override suspend fun findPhoto(id: Int): Photo? {
+        return photosRepository.photos().find { id == it.id }
     }
 }

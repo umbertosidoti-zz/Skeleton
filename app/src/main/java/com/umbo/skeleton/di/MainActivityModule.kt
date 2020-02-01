@@ -21,5 +21,4 @@ class MainActivityModule {
     @ActivityScope
     @Provides
     fun provideRouter(): Router = RouterImpl()
-
 }

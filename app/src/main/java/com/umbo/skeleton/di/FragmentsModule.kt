@@ -10,10 +10,10 @@ import dagger.android.ContributesAndroidInjector
 interface FragmentsModule {
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [ListFragmentModule::class])
-    fun contributeListFragmentt(): ListFragment
+    @ContributesAndroidInjector(modules = [ListFragmentModule::class, CommonFragmentsModule::class])
+    fun contributeListFragment(): ListFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [DetailFragmentModule::class])
+    @ContributesAndroidInjector(modules = [DetailFragmentModule::class, CommonFragmentsModule::class])
     fun contributeDetailFragment(): DetailFragment
 }

@@ -4,12 +4,17 @@ import com.umbo.data.Photo
 
 class PhotosStorageImpl: PhotosStorage {
 
-    private val storedPhotos: MutableList<Photo> = mutableListOf()
+    private var storedPhotos: MutableList<Photo>? = null
 
     override fun replacePhotos(photos: List<Photo>) {
-        storedPhotos.clear()
-        storedPhotos.addAll(photos)
+        storedPhotos = mutableListOf()
+        storedPhotos?.clear()
+        storedPhotos?.addAll(photos)
     }
 
-    override val photos: List<Photo> = storedPhotos.toList()
+    override val photos: List<Photo>? = storedPhotos?.toList()
+
+    override fun clearData() {
+        storedPhotos = null
+    }
 }
