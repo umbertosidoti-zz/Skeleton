@@ -13,10 +13,8 @@ class ListInteractorImpl(
 
     override suspend fun fetchPhotos(): List<Photo>? {
         val photos = repo.photos()
-        return photos?.let {
-            photosStorage.photos.clear()
-            photosStorage.photos.addAll(it)
-            it
+        return photos?.also {
+            photosStorage.replacePhotos(it)
         }
     }
 }
