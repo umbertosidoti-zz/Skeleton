@@ -1,6 +1,6 @@
 package com.umbo.skeleton.di
 
-import com.umbo.data.NetworkRepository
+import com.umbo.data.NetworkService
 import com.umbo.di.scope.FragmentScope
 import com.umbo.domain.PhotosRepository
 import com.umbo.domain.PhotosRepositoryImpl
@@ -13,8 +13,8 @@ class CommonFragmentsModule {
 
     @Provides
     @FragmentScope
-    fun providePhotosRepository(networkRepository: NetworkRepository, storage: PhotosStorage): PhotosRepository {
-        return PhotosRepositoryImpl(networkRepository, storage)
+    fun providePhotosRepository(networkService: NetworkService, storage: PhotosStorage): PhotosRepository {
+        return PhotosRepositoryImpl(networkService, storage)
     }
 
 }

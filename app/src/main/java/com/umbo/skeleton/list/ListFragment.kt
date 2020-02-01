@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.umbo.data.Outcome
 import com.umbo.skeleton.R
 import com.umbo.skeleton.core.BaseFragment
 import com.umbo.skeleton.core.HasRouter
-import com.umbo.skeleton.core.toVisibility
+import com.umbo.skeleton.core.ViewStateOutcome
 import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
 
@@ -33,9 +34,10 @@ class ListFragment : BaseFragment() {
         }
 
         viewModel.liveData.observe(viewLifecycleOwner, Observer { state ->
-            listLoading.visibility = View.GONE
-            listError.visibility = state.error.toVisibility()
-            adapter.addPhotos(state.photos)
+            when(state) {
+                is ViewStateOutcome.Success<List<PhotoViewState>> -> handleSuccessState(state.value)
+                is ViewStateOutcome.Error -> handleError()
+            }
         })
 
         viewModel.navigationAction.observe(viewLifecycleOwner, Observer { action ->
@@ -43,5 +45,16 @@ class ListFragment : BaseFragment() {
                 (activity as? HasRouter)?.router?.routeTo(action)
             }
         })
+    }
+
+    private fun handleError() {
+        listLoading.visibility = View.GONE
+        listError.visibility = View.VISIBLE
+    }
+
+    private fun handleSuccessState(photos: List<PhotoViewState>) {
+        listLoading.visibility = View.GONE
+        listError.visibility = View.GONE
+        adapter.addPhotos(photos)
     }
 }

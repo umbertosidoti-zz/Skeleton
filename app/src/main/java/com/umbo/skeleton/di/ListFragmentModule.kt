@@ -1,7 +1,6 @@
 package com.umbo.skeleton.di
 
 import androidx.lifecycle.ViewModel
-import com.umbo.data.NetworkRepository
 import com.umbo.data_android.ImageLoader
 import com.umbo.di.ViewModelKey
 import com.umbo.di.scope.FragmentScope
