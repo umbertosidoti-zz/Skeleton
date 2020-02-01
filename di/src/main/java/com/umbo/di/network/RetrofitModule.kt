@@ -1,9 +1,9 @@
 package com.umbo.di.network
 
 import com.umbo.data.NetworkService
-import com.umbo.network.RetrofitService
-import com.umbo.network.RetrofitService.Companion.BASE_URL
-import com.umbo.network.RetrofitServiceImpl
+import com.umbo.network.RetrofitEndPoint
+import com.umbo.network.RetrofitEndPoint.Companion.BASE_URL
+import com.umbo.network.RetrofitNetworkServiceImpl
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -27,8 +27,8 @@ object RetrofitModule {
                 .build())
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
-            .build().create(RetrofitService::class.java)
+            .build().create(RetrofitEndPoint::class.java)
 
-        return RetrofitServiceImpl(service)
+        return RetrofitNetworkServiceImpl(service)
     }
 }

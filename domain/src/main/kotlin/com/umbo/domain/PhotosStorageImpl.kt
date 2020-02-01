@@ -13,7 +13,7 @@ class PhotosStorageImpl: PhotosStorage {
     }
 
     override val photos: Outcome<List<Photo>>
-        get() = Outcome.Success(storedPhotos)
+        get() = Outcome.Success(storedPhotos) // if from database could return an error
 
     override fun clearData() {
         storedPhotos.clear()

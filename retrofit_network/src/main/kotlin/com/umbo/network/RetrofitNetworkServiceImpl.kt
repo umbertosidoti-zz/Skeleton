@@ -4,11 +4,11 @@ import com.umbo.data.NetworkService
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
 
-class RetrofitServiceImpl(private val service: RetrofitService) : NetworkService {
+class RetrofitNetworkServiceImpl(private val endPoint: RetrofitEndPoint) : NetworkService {
 
     override suspend fun photos(): Outcome<List<Photo>> {
         val mapper = NetworkPhotoToPhotoMapper()
-        val response = service.getPhotos()
+        val response = endPoint.getPhotos()
         val result = if (response.isSuccessful) {
             response.body()?.mapNotNull { mapper.map(it) }
         } else {

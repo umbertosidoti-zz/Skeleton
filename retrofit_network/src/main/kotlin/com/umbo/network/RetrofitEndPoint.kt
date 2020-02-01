@@ -3,7 +3,7 @@ package com.umbo.network
 import retrofit2.Response
 import retrofit2.http.GET
 
-interface RetrofitService {
+interface RetrofitEndPoint {
 
     @GET("/photos")
     suspend fun getPhotos(): Response<List<NetworkPhoto>>
