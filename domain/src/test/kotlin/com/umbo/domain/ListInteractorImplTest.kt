@@ -1,12 +1,13 @@
 package com.umbo.domain
 
+import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.Outcome
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.Mockito
+import org.mockito.Mockito.anyBoolean
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
@@ -24,42 +25,28 @@ class ListInteractorImplTest {
     }
 
     @Test
-    fun testCallCleanCache() {
-        runBlocking {
-            //When
-            listInteractor.photos()
-
-            //Then
-            verify(photosRepository).invalidateCachedData()
-            verify(photosRepository).photos()
-        }
-    }
-
-    @Test
-    fun testReturnError() {
+    fun testReturnError() = runBlocking {
         //Given
+        whenever(photosRepository.photos(anyBoolean())).thenReturn(Outcome.Error())
 
-        runBlocking {
-            //When
-            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Error())
-            val result = listInteractor.photos()
+        //When
+        val result = listInteractor.photos()
 
-            //Then
-            Assert.assertTrue(result is Outcome.Error)
-        }
+        //Then
+        verify(photosRepository).photos(false)
+        Assert.assertTrue(result is Outcome.Error)
     }
 
     @Test
-    fun testReturnSuccess() {
-        runBlocking {
-            //Given
-            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(emptyList()))
+    fun testReturnSuccess() = runBlocking {
+        //Given
+        whenever(photosRepository.photos(anyBoolean())).thenReturn(Outcome.Success(emptyList()))
 
-            //When
-            val result = listInteractor.photos()
+        //When
+        val result = listInteractor.photos()
 
-            //Then
-            Assert.assertTrue(result is Outcome.Success)
-        }
+        //Then
+        verify(photosRepository).photos(false)
+        Assert.assertTrue(result is Outcome.Success)
     }
 }

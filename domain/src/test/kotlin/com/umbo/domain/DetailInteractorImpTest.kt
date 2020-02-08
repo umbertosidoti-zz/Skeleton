@@ -1,13 +1,14 @@
 package com.umbo.domain
 
+import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers.anyBoolean
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
 class DetailInteractorImpTest {
@@ -24,66 +25,53 @@ class DetailInteractorImpTest {
     }
 
     @Test
-    fun testReturnErrorIfErrorFromRepository() {
+    fun testReturnErrorIfErrorFromRepository() = runBlocking {
         //Given
-        runBlocking {
-            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Error())
-        }
+        whenever(photosRepository.photos(anyBoolean())).thenReturn(Outcome.Error())
 
         //When
-        val result = runBlocking { detailInteractor.findPhoto(3) }
+        val result = detailInteractor.findPhoto(3)
 
         //Then
         assertTrue(result is Outcome.Error)
     }
 
     @Test
-    fun testReturnErrorIfEmptyRepository() {
+    fun testReturnErrorIfEmptyRepository() = runBlocking {
         //Given
-        runBlocking {
-            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(emptyList()))
-        }
+        whenever(photosRepository.photos(anyBoolean())).thenReturn(Outcome.Success(emptyList()))
 
         //When
-        val result = runBlocking { detailInteractor.findPhoto(3) }
+        val result = detailInteractor.findPhoto(3)
 
         //Then
         assertTrue(result is Outcome.Error)
     }
 
-
     @Test
-    fun testReturnErrorIfNoItemInRepository() {
+    fun testReturnErrorIfNoItemInRepository() = runBlocking {
+        //Given
+        whenever(photosRepository.photos()).thenReturn(Outcome.Success(listOf(Photo(1, 1, "", "", ""))))
 
-        runBlocking {
-            //Given
-            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(listOf(Photo(1, 1, "", "", ""))))
+        //When
+        val result = detailInteractor.findPhoto(3)
 
-            //When
-            val result = runBlocking { detailInteractor.findPhoto(3) }
-
-            //Then
-            assertTrue(result is Outcome.Error)
-        }
+        //Then
+        assertTrue(result is Outcome.Error)
     }
 
     @Test
-    fun testReturnSuccess() {
+    fun testReturnSuccess() = runBlocking {
+        //Given
+        val response = Outcome.Success(listOf(Photo(1, 3, "success", "", "")))
+        whenever(photosRepository.photos()).thenReturn(response)
 
-        runBlocking {
+        //When
+        val result = detailInteractor.findPhoto(3)
 
-            //Given
-            Mockito.`when`(photosRepository.photos())
-                .thenReturn(Outcome.Success(listOf(Photo(1, 3, "success", "", ""))))
-
-            //When
-            val result = detailInteractor.findPhoto(3)
-
-            //Then
-            val photo = (result as? Outcome.Success)?.value
-            assertNotNull(photo)
-            assertEquals(photo?.title, "success")
-        }
+        //Then
+        val photo = (result as? Outcome.Success)?.value
+        assertNotNull(photo)
+        assertEquals(photo?.title, "success")
     }
-
 }
