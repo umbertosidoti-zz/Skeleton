@@ -7,20 +7,27 @@ import com.umbo.data.Photo
 class PhotosRepositoryImpl(
     private val networkService: NetworkService,
     private val storage: PhotosStorage
-): PhotosRepository {
+) : PhotosRepository {
 
-    override fun invalidateCachedData() {
-        storage.clearData()
+    override suspend fun photos(dataFromCache: Boolean): Outcome<List<Photo>> {
+        return if (dataFromCache) {
+            val result = storage.photos
+            val cachedPhotos = (result as? Outcome.Success)?.value
+            if (cachedPhotos.isNullOrEmpty()) {
+                photoFromNetwork()
+            } else {
+                result
+            }
+        } else {
+            photoFromNetwork()
+        }
     }
 
-    override suspend fun photos():  Outcome<List<Photo>> {
-        val result = storage.photos
-        val cachedPhotos = (result as? Outcome.Success)?.value
-
-        return if (cachedPhotos.isNullOrEmpty()){
-            networkService.photos()
-        } else {
-            result
+    private suspend fun photoFromNetwork(): Outcome<List<Photo>> {
+        return networkService.photos().also { photos ->
+            (photos as? Outcome.Success)?.value?.let {
+                storage.replacePhotos(it)
+            }
         }
     }
 }

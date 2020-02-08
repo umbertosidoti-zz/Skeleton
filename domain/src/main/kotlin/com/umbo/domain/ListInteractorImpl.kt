@@ -8,7 +8,6 @@ class ListInteractorImpl(
 ) : ListInteractor {
 
     override suspend fun photos(): Outcome<List<Photo>> {
-        repository.invalidateCachedData()
-        return repository.photos()
+        return repository.photos(false)
     }
 }

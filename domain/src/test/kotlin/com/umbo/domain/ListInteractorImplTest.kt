@@ -25,38 +25,41 @@ class ListInteractorImplTest {
 
     @Test
     fun testCallCleanCache() {
-        //Given
+        runBlocking {
+            //When
+            listInteractor.photos()
 
-        //When
-        val result = runBlocking { listInteractor.photos() }
-
-        //Then
-        verify(photosRepository).invalidateCachedData()
-        verify(photosRepository).photos()
+            //Then
+            verify(photosRepository).invalidateCachedData()
+            verify(photosRepository).photos()
+        }
     }
 
     @Test
     fun testReturnError() {
         //Given
-        Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Error())
 
-        //When
-        val result = runBlocking { listInteractor.photos() }
+        runBlocking {
+            //When
+            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Error())
+            val result = listInteractor.photos()
 
-        //Then
-        Assert.assertTrue(result is Outcome.Error)
+            //Then
+            Assert.assertTrue(result is Outcome.Error)
+        }
     }
-
 
     @Test
     fun testReturnSuccess() {
-        //Given
-        Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(emptyList()))
+        runBlocking {
+            //Given
+            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(emptyList()))
 
-        //When
-        val result = runBlocking { listInteractor.photos() }
+            //When
+            val result = listInteractor.photos()
 
-        //Then
-        Assert.assertTrue(result is Outcome.Success)
+            //Then
+            Assert.assertTrue(result is Outcome.Success)
+        }
     }
 }

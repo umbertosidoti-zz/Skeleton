@@ -26,7 +26,9 @@ class DetailInteractorImpTest {
     @Test
     fun testReturnErrorIfErrorFromRepository() {
         //Given
-        Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Error())
+        runBlocking {
+            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Error())
+        }
 
         //When
         val result = runBlocking { detailInteractor.findPhoto(3) }
@@ -38,7 +40,9 @@ class DetailInteractorImpTest {
     @Test
     fun testReturnErrorIfEmptyRepository() {
         //Given
-        Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(emptyList()))
+        runBlocking {
+            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(emptyList()))
+        }
 
         //When
         val result = runBlocking { detailInteractor.findPhoto(3) }
@@ -50,29 +54,36 @@ class DetailInteractorImpTest {
 
     @Test
     fun testReturnErrorIfNoItemInRepository() {
-        //Given
-        Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(listOf(Photo(1, 1, "", "", ""))))
 
-        //When
-        val result = runBlocking { detailInteractor.findPhoto(3) }
+        runBlocking {
+            //Given
+            Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(listOf(Photo(1, 1, "", "", ""))))
 
-        //Then
-        assertTrue(result is Outcome.Error)
+            //When
+            val result = runBlocking { detailInteractor.findPhoto(3) }
+
+            //Then
+            assertTrue(result is Outcome.Error)
+        }
     }
 
     @Test
     fun testReturnSuccess() {
-        //Given
-        Mockito.`when`(photosRepository.photos()).thenReturn(Outcome.Success(listOf(Photo(1, 3, "success", "", ""))))
 
-        //When
-        val result = runBlocking { detailInteractor.findPhoto(3) }
+        runBlocking {
 
-        //Then
-        val photo = (result as? Outcome.Success)?.value
-        assertNotNull(photo)
-        assertEquals(photo?.title, "success")
+            //Given
+            Mockito.`when`(photosRepository.photos())
+                .thenReturn(Outcome.Success(listOf(Photo(1, 3, "success", "", ""))))
 
+            //When
+            val result = detailInteractor.findPhoto(3)
+
+            //Then
+            val photo = (result as? Outcome.Success)?.value
+            assertNotNull(photo)
+            assertEquals(photo?.title, "success")
+        }
     }
 
 }
