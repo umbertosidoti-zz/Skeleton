@@ -45,7 +45,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
     implementation project(path: ':retrofit_network')
-    implementation project(path: ':data_android')
+    implementation project(path: ':data_and_interface_android')
     implementation project(path: ':glide_image_loader')
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-moshi:2.6.1'

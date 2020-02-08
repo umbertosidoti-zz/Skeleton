@@ -6,7 +6,7 @@ import retrofit2.http.GET
 interface RetrofitEndPoint {
 
     @GET("/photos")
-    suspend fun getPhotos(): Response<List<NetworkPhoto>>
+    fun getPhotos(): Response<List<NetworkPhoto>>
 
     companion object {
         const val BASE_URL = "https://jsonplaceholder.typicode.com"

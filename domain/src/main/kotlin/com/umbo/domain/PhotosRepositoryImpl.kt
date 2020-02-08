@@ -9,11 +9,11 @@ class PhotosRepositoryImpl(
     private val storage: PhotosStorage
 ): PhotosRepository {
 
-    override suspend fun invalidateCachedData() {
+    override fun invalidateCachedData() {
         storage.clearData()
     }
 
-    override suspend fun photos():  Outcome<List<Photo>> {
+    override fun photos():  Outcome<List<Photo>> {
         val result = storage.photos
         val cachedPhotos = (result as? Outcome.Success)?.value
 
