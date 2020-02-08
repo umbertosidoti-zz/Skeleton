@@ -15,6 +15,6 @@ class RetrofitNetworkServiceImpl(private val endPoint: RetrofitEndPoint) : Netwo
             null
         }
 
-        return if (result != null) Outcome.Success(result) else Outcome.Error("error")
+        return if (result != null) Outcome.Success(result) else Outcome.Error()
     }
 }

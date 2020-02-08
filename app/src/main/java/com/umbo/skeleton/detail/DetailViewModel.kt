@@ -26,7 +26,7 @@ class DetailViewModel @Inject constructor(private val interactor: DetailInteract
                             )
                         )
                     )
-                    is Outcome.Error -> liveData.postValue(Outcome.Error("error"))
+                    is Outcome.Error -> liveData.postValue(Outcome.Error())
                 }
             }
         }

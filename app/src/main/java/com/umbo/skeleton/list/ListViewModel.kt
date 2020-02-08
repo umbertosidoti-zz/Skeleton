@@ -19,7 +19,7 @@ class ListViewModel @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch {
             val viewState = when (val result = interactor.photos()) {
                 is Outcome.Success -> Outcome.Success(result.value.map { postToViewStateMapper.map(it) })
-                is Outcome.Error -> Outcome.Error("error")
+                is Outcome.Error -> Outcome.Error()
             }
 
             liveData.postValue(viewState)
@@ -32,7 +32,7 @@ class ListViewModel @Inject constructor(
             if (photoId != null) {
                 navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
             } else {
-                Outcome.Error("error")
+                Outcome.Error()
             }
         }
     }
