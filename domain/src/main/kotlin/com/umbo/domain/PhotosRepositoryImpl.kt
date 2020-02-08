@@ -13,7 +13,7 @@ class PhotosRepositoryImpl(
         storage.clearData()
     }
 
-    override fun photos():  Outcome<List<Photo>> {
+    override suspend fun photos():  Outcome<List<Photo>> {
         val result = storage.photos
         val cachedPhotos = (result as? Outcome.Success)?.value
 

@@ -4,6 +4,6 @@ import com.umbo.data.Outcome
 import com.umbo.data.Photo
 
 interface PhotosRepository {
-    fun photos(): Outcome<List<Photo>>
+    suspend fun photos(): Outcome<List<Photo>>
     fun invalidateCachedData()
 }
