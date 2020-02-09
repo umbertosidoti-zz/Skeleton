@@ -1,19 +1,20 @@
 package com.umbo.skeleton.detail
 
+import androidx.lifecycle.viewModelScope
 import com.umbo.data.Outcome
 import com.umbo.domain.DetailInteractor
 import com.umbo.skeleton.core.BaseViewModelLiveData
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
-class DetailViewModel @Inject constructor(private val scope: CoroutineScope, private val interactor: DetailInteractor) :
+class DetailViewModel @Inject constructor(private val context: CoroutineContext, private val interactor: DetailInteractor) :
     BaseViewModelLiveData<Outcome<DetailViewState>>() {
 
     var payload: Int? = null
 
     override fun start() {
-        scope.launch {
+        viewModelScope.launch(context) {
             payload?.let {
                 when (val outcome = interactor.findPhoto(it)) {
                     is Outcome.Success -> liveData.postValue(

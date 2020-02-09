@@ -31,7 +31,7 @@ class DetailViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        viewModel = DetailViewModel(CoroutineScope(Dispatchers.Default), detailInteractor)
+        viewModel = DetailViewModel(Dispatchers.Default, detailInteractor)
 
     }
 
