@@ -27,7 +27,7 @@ class ListViewModel @Inject constructor(private val scope: CoroutineScope,
     }
 
     fun onItemClick(id: Int) {
-        CoroutineScope(Dispatchers.IO).launch {
+        scope.launch {
             val photoId = (interactor.photos() as? Outcome.Success)?.value?.find { it.id == id }
             if (photoId != null) {
                 navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
