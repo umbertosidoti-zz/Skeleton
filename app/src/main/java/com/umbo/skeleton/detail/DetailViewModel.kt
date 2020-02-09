@@ -4,7 +4,6 @@ import com.umbo.data.Outcome
 import com.umbo.domain.DetailInteractor
 import com.umbo.skeleton.core.BaseViewModelLiveData
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,7 +27,7 @@ class DetailViewModel @Inject constructor(private val scope: CoroutineScope, pri
                     )
                     is Outcome.Error -> liveData.postValue(Outcome.Error())
                 }
-            }
+            } ?: liveData.postValue(Outcome.Error())
         }
     }
 }
