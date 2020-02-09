@@ -21,12 +21,12 @@ class PhotosRepositoryImplTest {
     @Mock
     lateinit var storage: PhotosStorage
 
-    lateinit var photosRepositoryImpl: PhotosRepositoryImpl
+    lateinit var photosRepository: PhotosRepositoryImpl
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        photosRepositoryImpl = PhotosRepositoryImpl(networkService, storage)
+        photosRepository = PhotosRepositoryImpl(networkService, storage)
     }
 
     @Test
@@ -36,7 +36,7 @@ class PhotosRepositoryImplTest {
         whenever(networkService.photos()).thenReturn(Outcome.Error())
 
         //When
-        val photos = photosRepositoryImpl.photos()
+        val photos = photosRepository.photos()
 
         //Then
         verify(storage).photos
@@ -51,7 +51,7 @@ class PhotosRepositoryImplTest {
         whenever(networkService.photos()).thenReturn(Outcome.Error())
 
         //When
-        val photos = photosRepositoryImpl.photos()
+        val photos = photosRepository.photos()
 
         //Then
         verify(storage).photos
@@ -66,7 +66,7 @@ class PhotosRepositoryImplTest {
         whenever(networkService.photos()).thenReturn(Outcome.Error())
 
         //When
-        val photos = photosRepositoryImpl.photos()
+        val photos = photosRepository.photos()
 
         //Then
         verify(storage).photos
@@ -81,7 +81,7 @@ class PhotosRepositoryImplTest {
         whenever(networkService.photos()).thenReturn(Outcome.Error())
 
         //When
-        val photos = photosRepositoryImpl.photos(false)
+        val photos = photosRepository.photos(false)
 
         //Then
         verify(storage, never()).photos
@@ -96,7 +96,7 @@ class PhotosRepositoryImplTest {
         whenever(networkService.photos()).thenReturn(Outcome.Success(emptyList()))
 
         //When
-        val photos = photosRepositoryImpl.photos(false)
+        val photos = photosRepository.photos(false)
 
         //Then
         verify(storage, never()).photos
