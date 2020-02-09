@@ -32,7 +32,6 @@ class DetailViewModelTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         viewModel = DetailViewModel(Dispatchers.Default, detailInteractor)
-
     }
 
     @Test
