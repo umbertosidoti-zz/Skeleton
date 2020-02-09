@@ -10,13 +10,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ListViewModel @Inject constructor(
-    private val interactor: ListInteractor,
+class ListViewModel @Inject constructor(private val scope: CoroutineScope,
+                                        private val interactor: ListInteractor,
     private val postToViewStateMapper: PostToViewStateMapper
 ) : BaseViewModelLiveData<Outcome<List<PhotoViewState>>>() {
 
     override fun start() {
-        CoroutineScope(Dispatchers.IO).launch {
+        scope.launch {
             val viewState = when (val result = interactor.photos()) {
                 is Outcome.Success -> Outcome.Success(result.value.map { postToViewStateMapper.map(it) })
                 is Outcome.Error -> Outcome.Error()

@@ -8,13 +8,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DetailViewModel @Inject constructor(private val interactor: DetailInteractor) :
+class DetailViewModel @Inject constructor(private val scope: CoroutineScope, private val interactor: DetailInteractor) :
     BaseViewModelLiveData<Outcome<DetailViewState>>() {
 
     var payload: Int? = null
 
     override fun start() {
-        CoroutineScope(Dispatchers.IO).launch {
+        scope.launch {
             payload?.let {
                 when (val outcome = interactor.findPhoto(it)) {
                     is Outcome.Success -> liveData.postValue(

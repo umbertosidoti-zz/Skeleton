@@ -17,6 +17,7 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         SkeletonModule::class,
         RetrofitModule::class,
+        CoroutinesModule::class,
         GlideModule::class,
         ActivitiesModule::class,
         ViewModelFactoryModule::class
