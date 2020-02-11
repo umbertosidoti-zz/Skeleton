@@ -33,7 +33,7 @@ class ListViewModel @Inject constructor(@IO private val dispatcher: CoroutineDis
             if (photoId != null) {
                 navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
             } else {
-                Outcome.Error()
+                liveData.postValue(Outcome.Error())
             }
         }
     }
