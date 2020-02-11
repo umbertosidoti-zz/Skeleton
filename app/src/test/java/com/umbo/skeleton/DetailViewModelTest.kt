@@ -6,7 +6,6 @@ import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import com.umbo.domain.DetailInteractor
 import com.umbo.skeleton.detail.DetailViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue

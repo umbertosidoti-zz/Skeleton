@@ -6,20 +6,19 @@ import com.umbo.data.NavigationCommand
 import com.umbo.data.Outcome
 import com.umbo.domain.ListInteractor
 import com.umbo.skeleton.core.BaseViewModelLiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.umbo.skeleton.di.corutines.IO
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
-class ListViewModel @Inject constructor(private val context: CoroutineContext,
+class ListViewModel @Inject constructor(@IO private val dispatcher: CoroutineDispatcher,
                                         private val interactor: ListInteractor,
-    private val postToViewStateMapper: PostToViewStateMapper
+                                        private val postToViewStateMapper: PostToViewStateMapper
 ) : BaseViewModelLiveData<Outcome<List<PhotoViewState>>>() {
 
     override fun start() {
 
-        viewModelScope.launch(context) {
+        viewModelScope.launch(dispatcher) {
             val viewState = when (val result = interactor.photos()) {
                 is Outcome.Success -> Outcome.Success(result.value.map { postToViewStateMapper.map(it) })
                 is Outcome.Error -> Outcome.Error()
@@ -30,7 +29,7 @@ class ListViewModel @Inject constructor(private val context: CoroutineContext,
     }
 
     fun onItemClick(id: Int) {
-        viewModelScope.launch(context) {
+        viewModelScope.launch(dispatcher) {
             val photoId = (interactor.photos() as? Outcome.Success)?.value?.find { it.id == id }
             if (photoId != null) {
                 navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))

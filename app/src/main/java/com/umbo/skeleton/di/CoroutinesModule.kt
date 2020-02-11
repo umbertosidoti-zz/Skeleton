@@ -1,15 +1,19 @@
 package com.umbo.skeleton.di
 
+import com.umbo.skeleton.di.corutines.IO
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlin.coroutines.CoroutineContext
+import javax.inject.Singleton
 
-@Module()
+@Module
 class CoroutinesModule {
 
+    @IO
     @Provides
-    fun provideCoroutineScope() : CoroutineContext {
+    @Singleton
+    fun provideDispatchers() : CoroutineDispatcher {
         return Dispatchers.IO
     }
 }
