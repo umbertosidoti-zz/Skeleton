@@ -17,7 +17,6 @@ class ListViewModel @Inject constructor(@IO private val dispatcher: CoroutineDis
 ) : BaseViewModelLiveData<Outcome<List<PhotoViewState>>>() {
 
     override fun start() {
-
         viewModelScope.launch(dispatcher) {
             val viewState = when (val result = interactor.photos()) {
                 is Outcome.Success -> Outcome.Success(result.value.map { postToViewStateMapper.map(it) })

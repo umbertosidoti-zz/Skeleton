@@ -1,26 +1,33 @@
 package com.umbo.skeleton
 
-import androidx.test.InstrumentationRegistry
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import androidx.test.runner.AndroidJUnit4
-
+import androidx.test.rule.ActivityTestRule
+import com.umbo.skeleton.pages.DetailPage.Companion.whileOnDetailScreen
+import com.umbo.skeleton.pages.ListPage.Companion.whileOnListScreen
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
-import org.junit.Rule
-
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ExampleInstrumentedTest {
 
+    @get:Rule
+    var mActivityRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
 
     @Test
     fun testNavigateSecondScreen() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.umbo.skeleton", appContext.packageName)
-    }
+        whileOnListScreen {
+            shouldSeeLoading()
+            shouldSeeListResults()
+            Thread.sleep(1000)
+            tapOnElement(0)
+        }
 
+        whileOnDetailScreen {
+            shouldSeeTitle("accusamus beatae ad facilis cum similique qui sunt")
+            shouldSeeAlbum("1")
+            shouldSeeUrl("https://via.placeholder.com/600/92c952")
+        }
+    }
 }

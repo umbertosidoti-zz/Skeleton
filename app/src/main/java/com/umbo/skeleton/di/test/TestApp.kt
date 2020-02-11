@@ -1,14 +1,13 @@
-package com.umbo.skeleton
+package com.umbo.skeleton.di.test
 
-import com.umbo.skeleton.di.DaggerSkeletonComponent
+import com.umbo.skeleton.SkeletonApp
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
-open class SkeletonApp : DaggerApplication() {
+class TestApp: SkeletonApp() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-
-        return DaggerSkeletonComponent.builder()
+        return DaggerTestSkeletonComponent.builder()
             .application(this)
             .build()
     }
