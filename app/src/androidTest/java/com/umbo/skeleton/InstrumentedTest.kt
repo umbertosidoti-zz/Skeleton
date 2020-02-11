@@ -10,17 +10,17 @@ import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class ExampleInstrumentedTest {
+class InstrumentedTest {
 
     @get:Rule
-    var mActivityRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
+    var mActivityRule: ActivityTestRule<MainActivity> = SkeletonActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun testNavigateSecondScreen() {
+    fun testE2E() {
         whileOnListScreen {
             shouldSeeLoading()
             shouldSeeListResults()
-            Thread.sleep(1000)
+            Thread.sleep(300)
             tapOnElement(0)
         }
 
@@ -28,6 +28,11 @@ class ExampleInstrumentedTest {
             shouldSeeTitle("accusamus beatae ad facilis cum similique qui sunt")
             shouldSeeAlbum("1")
             shouldSeeUrl("https://via.placeholder.com/600/92c952")
+            tapBack()
+        }
+
+        whileOnListScreen {
+            shouldSeeListResults()
         }
     }
 }

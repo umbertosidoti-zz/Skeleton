@@ -21,6 +21,12 @@ class DetailPage {
         }
     }
 
+    fun tapBack() {
+        onDetailScreen {
+            pressBack()
+        }
+    }
+
     fun shouldSeeAlbum(text: String) {
         onDetailScreen {
             album {

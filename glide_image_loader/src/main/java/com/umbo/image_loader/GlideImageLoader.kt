@@ -2,13 +2,15 @@ package com.umbo.image_loader
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.umbo.data_android.ImageLoader
 
 class GlideImageLoader: ImageLoader {
 
-    override fun load(url: String, imageView: ImageView, placeHolder: Int?) {
+    private val TIMEOUT = 10000
 
-        Glide.with(imageView)
+    override fun load(url: String, imageView: ImageView, placeHolder: Int?) {
+        Glide.with(imageView).applyDefaultRequestOptions(RequestOptions().timeout(TIMEOUT))
             .load(url)
             .centerCrop()
             .placeholder(placeHolder?: R.drawable.placeholder)
