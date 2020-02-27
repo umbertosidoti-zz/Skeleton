@@ -62,9 +62,67 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.agoda.kakao:kakao:2.2.0'
-    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.0') {
+    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:2.0') {
         exclude group: 'com.android.support', module: 'appcompat'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude module: 'recyclerview-v7'
+    }
+}
+
+apply plugin: 'jacoco'
+jacoco {
+    toolVersion = '0.8.1' //Use latest version
+}
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+android {
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+    }
+    testOptions {
+        execution 'ANDROID_TEST_ORCHESTRATOR'
+        animationsDisabled true
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+    buildDir = '../app/build'
+    def coverageSourceDirs = [
+            "src/main/java",
+            "src/main/kotlin"
+    ]
+    def fileFilter = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$ViewInjector*.*',
+            '**/*$ViewBinder*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*'
+    ]
+    def javaClasses = fileTree(
+            dir: "$buildDir/intermediates/classes/debug",
+            excludes: fileFilter
+    )
+
+    def kotlinClasses = fileTree(
+            dir: "$buildDir/tmp/kotlin-classes/debug",
+            excludes: fileFilter
+    )
+
+    classDirectories = files([ javaClasses ], [ kotlinClasses ])
+    additionalSourceDirs = files(coverageSourceDirs)
+    sourceDirectories = files(coverageSourceDirs)
+    executionData = fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec"
+    ])
+    reports {
+        xml.enabled = true
+        html.enabled = true
     }
 }
