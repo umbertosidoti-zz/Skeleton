@@ -3,6 +3,7 @@ apply plugin: 'jacoco'
 jacoco {
     toolVersion = '0.8.1' //Use latest version
 }
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -18,33 +19,32 @@ repositories {
 
 sourceCompatibility = "7"
 targetCompatibility = "7"
-
+/*
 task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['test']) {
-    buildDir = '../domain/build'
     def coverageSourceDirs = [
             "src/main/java",
             "src/main/kotlin"
     ]
     def fileFilter = []
     def javaClasses = fileTree(
-            dir: "$buildDir/intermediates/classes/debug",
+            dir: "${buildDir}/intermediates/classes/debug",
             excludes: fileFilter
     )
 
     def kotlinClasses = fileTree(
-            dir: "$buildDir/tmp/kotlin-classes/debug",
+            dir: "${buildDir}/tmp/kotlin-classes/debug",
             excludes: fileFilter
     )
 
     classDirectories = files([ javaClasses ], [ kotlinClasses ])
     additionalSourceDirs = files(coverageSourceDirs)
     sourceDirectories = files(coverageSourceDirs)
-    executionData = fileTree(dir: "$buildDir", includes: [
+    executionData = fileTree(dir: "${buildDir}", includes: [
             "jacoco/test.exec"
     ])
     reports {
         xml.enabled = true
         html.enabled = true
     }
-}
+}*/
 
