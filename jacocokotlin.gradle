@@ -20,7 +20,7 @@ project.afterEvaluate {
 
         // generated classes
         classDirectories = fileTree(
-                dir: "$buildDir/tmp/kotlin-classes/debug",
+                dir: "$buildDir/classes/kotlin/main",
                 excludes: excludes
         )
 
