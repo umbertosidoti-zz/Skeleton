@@ -1,0 +1,36 @@
+apply plugin: 'jacoco'
+jacoco {
+    toolVersion = "0.8.1"
+}
+project.afterEvaluate {
+    task "testDebugUnitTestCoverage"(type: JacocoReport, dependsOn: "test") {
+        group = "Reporting"
+        description = "UMBO Generate Jacoco coverage reports on the debug build."
+        def excludes = [
+                '**/R.class',
+                '**/R$*.class',
+                '**/*$ViewInjector*.*',
+                '**/BuildConfig.*',
+                '**/Manifest*.*',
+                '**/*Test*.*',
+                'android/**/*.*',
+                '**/*Fragment.*',
+                '**/*Activity.*'
+        ]
+
+        // generated classes
+        classDirectories = fileTree(
+                dir: "$buildDir/tmp/kotlin-classes/debug",
+                excludes: excludes
+        )
+
+        // sources
+        sourceDirectories = files(["src/main/kotlin"])
+
+        executionData = files("${project.buildDir}/jacoco/test.exec")
+        reports {
+            xml.enabled = true
+            html.enabled = true
+        }
+    }
+}

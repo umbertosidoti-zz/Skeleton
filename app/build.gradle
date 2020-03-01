@@ -7,7 +7,7 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
-apply from: '../jacoco.gradle'
+apply from: '../jacocoandroid.gradle'
 
 android {
     compileSdkVersion 29
