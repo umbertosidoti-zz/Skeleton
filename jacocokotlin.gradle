@@ -3,7 +3,7 @@ jacoco {
     toolVersion = "0.8.1"
 }
 project.afterEvaluate {
-    task "testDebugUnitTestCoverage"(type: JacocoReport, dependsOn: "test") {
+    task "testCoverage"(type: JacocoReport, dependsOn: "test") {
         group = "Reporting"
         description = "UMBO Generate Jacoco coverage reports on the debug build."
         def excludes = [
