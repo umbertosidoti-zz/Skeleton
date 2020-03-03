@@ -1,13 +1,10 @@
 apply plugin: 'com.android.application'
 
-
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
-
-apply from: '../jacocoandroid.gradle'
 
 android {
     compileSdkVersion 29
@@ -23,13 +20,6 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            minifyEnabled false
-            testCoverageEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
