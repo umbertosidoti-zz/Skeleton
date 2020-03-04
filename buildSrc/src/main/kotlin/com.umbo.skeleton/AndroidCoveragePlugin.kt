@@ -2,7 +2,7 @@ package com.umbo.skeleton
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import com.umbo.skeleton.CodeCoverageOptions.applyAndroidCodeCoverageOptions
+import com.umbo.skeleton.CoverageUtils.applyAndroidCodeCoverageOptions
 
 class AndroidCoveragePlugin: Plugin<Project> {
 
