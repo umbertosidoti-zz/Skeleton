@@ -1,1 +1,1 @@
-include ':app', ':domain', ':data_and_interface', ':retrofit_network', ':di', ':data_and_interface_android', ':glide_image_loader'
+include ':app', ':domain', ':data_and_interface', ':retrofit_network', ':di', ':data_and_interface_android', ':glide_image_loader', ':coverage_jacoco_plugin'
