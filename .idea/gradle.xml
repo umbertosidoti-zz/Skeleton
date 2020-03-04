@@ -10,7 +10,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
-            <option value="$PROJECT_DIR$/coverage_jacoco_plugin" />
             <option value="$PROJECT_DIR$/data_and_interface" />
             <option value="$PROJECT_DIR$/data_and_interface_android" />
             <option value="$PROJECT_DIR$/di" />
