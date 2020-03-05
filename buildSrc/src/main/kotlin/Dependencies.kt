@@ -32,6 +32,7 @@ object Libraries {
         const val coroutines = "1.3.0"
     }
 
+    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${AndroidSdk.kotlin}"
     val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
     val daggerSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
@@ -54,7 +55,6 @@ object AndroidTestLibraries {
     val espressoIdling = "androidx.test.espresso:espresso-idling-resource:${Version.espressoIdling}"
     val archCore = "android.arch.core:core-testing:${Version.archCore}"
     val runner =  "androidx.test:runner:${Version.runner}"
-    val extJunit = "androidx.test.ext:junit:${Version.extJunit}"
     val espressoCore = "androidx.test.espresso:espresso-core:${Version.espressoCore}"
     val testRules = "com.android.support.test:rules:${Version.testRules}"
     val espressoContrib = "com.android.support.test.espresso:espresso-contrib:${Version.espressoContrib}"

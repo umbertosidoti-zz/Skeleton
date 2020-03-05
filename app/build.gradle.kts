@@ -25,13 +25,14 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${AndroidSdk.kotlin}")
     implementation(project(":data_and_interface"))
     implementation(project(":data_and_interface_android"))
     implementation(project(":domain"))
     implementation(project(":di"))
 
+    implementation(Libraries.kotlin)
     implementation(Libraries.coroutines)
+
     implementation(AndroidLibraries.androidxAppcompat)
     implementation(AndroidLibraries.androidxCore)
     implementation(AndroidLibraries.androidxConstraintlayout)
