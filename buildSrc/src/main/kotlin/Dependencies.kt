@@ -28,6 +28,7 @@ object AndroidLibraries {
 object Libraries {
     private object Versions {
         const val dagger = "2.24"
+        const val coroutines = "1.3.0"
     }
 
     val dagger = "com.google.dagger:dagger:${Versions.dagger}"
@@ -35,5 +36,41 @@ object Libraries {
     val daggerSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     val daggerCompile = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+}
+
+object AndroidTestLibraries {
+    private object Version {
+        const val espressoIdling = "3.2.0"
+        const val archCore = "1.1.1"
+        const val extJunit = "1.1.1"
+        const val runner = "1.2.0"
+        const val espressoCore = "3.2.0"
+        const val testRules = "1.0.2"
+        const val espressoContrib = "2.0"
+    }
+
+    val espressoIdling = "androidx.test.espresso:espresso-idling-resource:${Version.espressoIdling}"
+    val archCore = "android.arch.core:core-testing:${Version.archCore}"
+    val runner =  "androidx.test:runner:${Version.runner}"
+    val extJunit = "androidx.test.ext:junit:${Version.extJunit}"
+    val espressoCore = "androidx.test.espresso:espresso-core:${Version.espressoCore}"
+    val testRules = "com.android.support.test:rules:${Version.testRules}"
+    val espressoContrib = "com.android.support.test.espresso:espresso-contrib:${Version.espressoContrib}"
+}
+
+object TestLibraries {
+    private object Version {
+        const val junit = "4.12"
+        const val mockito = "2.2.0"
+        const val coroutinesTest = "1.3.3"
+        const val kakao =  "2.2.0"
+    }
+
+    val junit = "junit:junit:${Version.junit}"
+    val mockito = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Version.mockito}"
+    val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutinesTest}"
+    val kakao =  "com.agoda.kakao:kakao:${Version.kakao}"
+
 }
 
