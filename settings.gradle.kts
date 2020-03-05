@@ -1,0 +1,9 @@
+include(
+    ":app",
+    ":domain",
+    ":data_and_interface",
+    ":retrofit_network",
+    ":di",
+    ":data_and_interface_android",
+    ":glide_image_loader"
+)

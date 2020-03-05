@@ -3,6 +3,7 @@ object AndroidSdk {
     const val compile = 29
     const val target = compile
     const val buildTools = "29.0.2"
+    const val kotlin = "1.3.41"
 }
 
 object AndroidLibraries {
