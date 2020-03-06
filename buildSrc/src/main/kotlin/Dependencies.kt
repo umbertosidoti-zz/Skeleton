@@ -30,6 +30,9 @@ object Libraries {
     private object Versions {
         const val dagger = "2.24"
         const val coroutines = "1.3.0"
+        const val retrofit = "2.6.1"
+        const val moshi = "2.6.1"
+        const val okhttp = "4.3.1"
     }
 
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${AndroidSdk.kotlin}"
@@ -39,6 +42,9 @@ object Libraries {
     val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     val daggerCompile = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.coroutines}"
+    val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
 }
 
 object AndroidTestLibraries {
