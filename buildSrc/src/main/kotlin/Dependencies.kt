@@ -33,6 +33,7 @@ object Libraries {
         const val retrofit = "2.6.1"
         const val moshi = "2.6.1"
         const val okhttp = "4.3.1"
+        const val glide = "4.9.0"
     }
 
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${AndroidSdk.kotlin}"
@@ -45,6 +46,7 @@ object Libraries {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.coroutines}"
     val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+    val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
 
 object AndroidTestLibraries {
