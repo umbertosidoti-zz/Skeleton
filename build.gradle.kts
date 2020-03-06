@@ -20,8 +20,6 @@ allprojects {
     }
 }
 
-apply("jacocoCoverage.gradle")
-
 tasks {
     val clear by registering(Delete::class) {
         delete(buildDir)

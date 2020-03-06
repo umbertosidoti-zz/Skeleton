@@ -1,7 +1,10 @@
+@file:Suppress("UnstableApiUsage")
+
 package com.umbo.skeleton
 
 import org.gradle.api.Project
 import org.gradle.api.Task
+import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.*
 import org.gradle.testing.jacoco.plugins.JacocoPluginExtension
 import org.gradle.testing.jacoco.plugins.JacocoTaskExtension
@@ -15,18 +18,13 @@ object CoverageUtils {
 
     fun Project.applyAndroidCodeCoverageOptions() = this.run {
         afterEvaluate {
-            val task = configureAndroid("","","","")
+            val task = configureAndroid()
             addToRoot(project, FULL_COVERAGE_REPORT_TASK, task, REPORT_DESCRIPTION)
         }
 
     }
 
-    private fun Project.configureAndroid(
-        testTaskName: String,
-        javaClassesSubfolder: String,
-        kotlinClassesSubfolder: String,
-        executionDataPath: String
-    ): JacocoReport {
+    private fun Project.configureAndroid(): JacocoReport {
 
         plugins.apply("jacoco")
         configure<JacocoPluginExtension> {
@@ -34,40 +32,42 @@ object CoverageUtils {
         }
 
         tasks.whenTaskAdded {
-            extensions.findByType(JacocoTaskExtension::class.java)?.let {
-                extensions.getByType(JacocoTaskExtension::class.java).apply {
-                    isIncludeNoLocationClasses = true
+            tasks.withType<Test> {
+                extensions.findByType(JacocoTaskExtension::class.java)?.let {
+                    extensions.getByType(JacocoTaskExtension::class.java).apply {
+                        isIncludeNoLocationClasses = true
+                    }
                 }
             }
         }
 
         return tasks.create("jacocoTestReport", JacocoReport::class) {
-            dependsOn(testTaskName)
+            dependsOn("testDebugUnitTest")
 
             group = "Reporting"
             description = "Generate Jacoco coverage reports after running tests."
 
             reports {
                 xml.isEnabled = true
-                xml.destination = file("$buildDir/reports/jacoco/jacoco.xml")
+                xml.destination = file("${project.buildDir}/reports/jacoco/jacoco.xml")
 
                 html.isEnabled = true
-                html.destination = file("$buildDir/reports/jacoco")
+                html.destination = file("${project.buildDir}/reports/jacoco")
             }
 
-            val debugTree = fileTree(javaClassesSubfolder) { exclude(emptyList()) }
-            val kotlinDebugTree = fileTree(kotlinClassesSubfolder) { exclude(emptyList()) }
-            val unified = files(debugTree, kotlinDebugTree)
+            val javaDebugTree = fileTree("${project.buildDir}/intermediates/javac/debug") { exclude(emptyList()) }
+            val kotlinDebugTree = fileTree("${project.buildDir}/tmp/kotlin-classes/debug") { exclude(emptyList()) }
+            val unifiedTree = files(javaDebugTree, kotlinDebugTree)
 
-            classDirectories.setFrom(unified)
+            classDirectories.setFrom(unifiedTree)
 
-            sourceDirectories.setFrom(files("${projectDir}/src/main/java", "${projectDir}/src/main/kotlin"))
-            additionalSourceDirs.setFrom(files("${projectDir}/src/main/java", "${projectDir}/src/main/kotlin"))
+            sourceDirectories.setFrom(files("$projectDir/src/main/java", "$projectDir/src/main/kotlin"))
+            additionalSourceDirs.setFrom(files("$projectDir/src/main/java", "$projectDir/src/main/kotlin"))
 
-            executionData.setFrom(files(executionDataPath))
+            executionData.setFrom(files("${project.buildDir}/jacoco/testDebugUnitTest.exec"))
 
             doFirst {
-                unified.files.forEach { file ->
+                unifiedTree.files.forEach { file ->
                     if (file.name.contains("$$")) {
                         file.renameTo(file(file.path.replace("$$", "$")))
                     }
