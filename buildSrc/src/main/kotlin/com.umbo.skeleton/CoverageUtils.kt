@@ -24,13 +24,21 @@ object CoverageUtils {
 
     }
 
-    private fun Project.configureAndroid(): JacocoReport {
+    fun Project.applyKotlinCodeCoverageOptions() = this.run {
+        afterEvaluate {
+            val task = configureKotlin()
+            addToRoot(project, FULL_COVERAGE_REPORT_TASK, task, REPORT_DESCRIPTION)
+        }
 
+    }
+
+    private fun Project.configureKotlin(): JacocoReport {
         plugins.apply("jacoco")
         configure<JacocoPluginExtension> {
             toolVersion = "0.8.5"
         }
 
+        /*
         tasks.whenTaskAdded {
             tasks.withType<Test> {
                 extensions.findByType(JacocoTaskExtension::class.java)?.let {
@@ -39,9 +47,63 @@ object CoverageUtils {
                     }
                 }
             }
+        }*/
+
+        return tasks.create("jacocoReport", JacocoReport::class) {
+            dependsOn("test")
+
+            group = "Reporting"
+            description = "Generate Jacoco coverage reports after running tests."
+
+            reports {
+                xml.isEnabled = true
+                xml.destination = file("${project.buildDir}/reports/jacoco/jacoco.xml")
+
+                html.isEnabled = true
+                html.destination = file("${project.buildDir}/reports/jacoco")
+            }
+
+           // val javaDebugTree = fileTree("${project.buildDir}/intermediates/javac/debug") { exclude(emptyList()) }
+            val kotlinDebugTree = fileTree("${project.buildDir}/classes/kotlin/main") { exclude(emptyList()) }
+            val unifiedTree = files(kotlinDebugTree)
+
+            classDirectories.setFrom(unifiedTree)
+
+            sourceDirectories.setFrom(files("$projectDir/src/main/java", "$projectDir/src/main/kotlin"))
+            additionalSourceDirs.setFrom(files("$projectDir/src/main/java", "$projectDir/src/main/kotlin"))
+
+            executionData.setFrom(files("${project.buildDir}/jacoco/test.exec"))
+
+            doFirst {
+                unifiedTree.files.forEach { file ->
+                    if (file.name.contains("$$")) {
+                        file.renameTo(file(file.path.replace("$$", "$")))
+                    }
+                }
+            }
+        }
+    }
+
+
+    private fun Project.configureAndroid(): JacocoReport {
+
+        plugins.apply("jacoco")
+        configure<JacocoPluginExtension> {
+            toolVersion = "0.8.5"
         }
 
-        return tasks.create("jacocoTestReport", JacocoReport::class) {
+        /*
+        tasks.whenTaskAdded {
+            tasks.withType<Test> {
+                extensions.findByType(JacocoTaskExtension::class.java)?.let {
+                    extensions.getByType(JacocoTaskExtension::class.java).apply {
+                        isIncludeNoLocationClasses = true
+                    }
+                }
+            }
+        }*/
+
+        return tasks.create("jacocoReport", JacocoReport::class) {
             dependsOn("testDebugUnitTest")
 
             group = "Reporting"
@@ -79,7 +141,7 @@ object CoverageUtils {
     private fun Project.addToRoot(project: Project, key: String, jacocoReport: JacocoReport, taskDescription: String): Task? {
         val coverageReportTask = getTask(key, jacocoReport, taskDescription)
         return coverageReportTask.configure(closureOf<JacocoReport> {
-            dependsOn(project.tasks["jacocoTestReport"])
+            dependsOn(project.tasks["jacocoReport"])
         })
     }
 
