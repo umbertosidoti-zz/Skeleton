@@ -13,12 +13,12 @@ import org.gradle.testing.jacoco.tasks.JacocoReport
 @Suppress("UnsafeCast", "ThrowRuntimeException", "NestedBlockDepth")
 object CoverageUtils {
 
-    private const val FULL_COVERAGE_REPORT_TASK = "fullCoverageReport"
+    private const val FULL_COVERAGE_REPORT_TASK = "fullJacocoCoverageReport"
     private const val REPORT_DESCRIPTION = "Generate Jacoco coverage reports aggregated from all project"
 
     fun Project.applyAndroidCodeCoverageOptions() = this.run {
         afterEvaluate {
-            println("UMBO add android coverage")
+            println("Jacoco: Add to ${project.name} module jacoco(android) coverage")
             val task = configureAndroid()
             addToRoot(project, FULL_COVERAGE_REPORT_TASK, task, REPORT_DESCRIPTION)
         }
@@ -27,7 +27,7 @@ object CoverageUtils {
 
     fun Project.applyKotlinCodeCoverageOptions() = this.run {
         afterEvaluate {
-            println("UMBO add kotlin coverage")
+            println("Jacoco: Add to ${project.name} module jacoco(kotlin) coverage")
             val task = configureKotlin()
             addToRoot(project, FULL_COVERAGE_REPORT_TASK, task, REPORT_DESCRIPTION)
         }
@@ -40,18 +40,7 @@ object CoverageUtils {
             toolVersion = "0.8.5"
         }
 
-        /*
-        tasks.whenTaskAdded {
-            tasks.withType<Test> {
-                extensions.findByType(JacocoTaskExtension::class.java)?.let {
-                    extensions.getByType(JacocoTaskExtension::class.java).apply {
-                        isIncludeNoLocationClasses = true
-                    }
-                }
-            }
-        }*/
-
-        return tasks.create("jacocoReport", JacocoReport::class) {
+        return tasks.create("moduleJacocoCoverageReport", JacocoReport::class) {
             dependsOn("test")
 
             group = "Reporting"
@@ -94,18 +83,7 @@ object CoverageUtils {
             toolVersion = "0.8.5"
         }
 
-        /*
-        tasks.whenTaskAdded {
-            tasks.withType<Test> {
-                extensions.findByType(JacocoTaskExtension::class.java)?.let {
-                    extensions.getByType(JacocoTaskExtension::class.java).apply {
-                        isIncludeNoLocationClasses = true
-                    }
-                }
-            }
-        }*/
-
-        return tasks.create("jacocoReport", JacocoReport::class) {
+        return tasks.create("moduleJacocoCoverageReport", JacocoReport::class) {
             dependsOn("testDebugUnitTest")
 
             group = "Reporting"
@@ -143,7 +121,7 @@ object CoverageUtils {
     private fun Project.addToRoot(project: Project, key: String, jacocoReport: JacocoReport, taskDescription: String): Task? {
         val coverageReportTask = getTask(key, jacocoReport, taskDescription)
         return coverageReportTask.configure(closureOf<JacocoReport> {
-            dependsOn(project.tasks["jacocoReport"])
+            dependsOn(project.tasks["moduleJacocoCoverageReport"])
         })
     }
 
