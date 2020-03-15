@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.umbo.data.Outcome
+import com.umbo.di.ViewModelProvidersWrapper
 import com.umbo.skeleton.R
 import com.umbo.skeleton.core.BaseFragment
 import com.umbo.skeleton.core.HasRouter
@@ -18,6 +19,9 @@ class ListFragment : BaseFragment() {
 
     @Inject
     lateinit var adapter: ListRecylerViewAdapter
+
+    @Inject
+    lateinit var viewModelProvider: ViewModelProvidersWrapper
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

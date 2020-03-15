@@ -15,9 +15,6 @@ abstract class BaseFragment: DaggerFragment() {
 
     abstract val layoutId: Int
 
-    @Inject
-    lateinit var viewModelProvider: ViewModelProvidersWrapper
-
     var payload: Serializable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

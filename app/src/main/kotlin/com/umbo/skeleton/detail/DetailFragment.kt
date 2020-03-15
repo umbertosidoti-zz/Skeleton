@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.umbo.data.Outcome
 import com.umbo.data_android.ImageLoader
+import com.umbo.di.ViewModelProvidersWrapper
 import com.umbo.skeleton.R
 import com.umbo.skeleton.core.BaseFragment
 import kotlinx.android.synthetic.main.detail_fragment.*
@@ -14,6 +15,9 @@ class DetailFragment : BaseFragment() {
 
     @Inject
     lateinit var imageLoader: ImageLoader
+
+    @Inject
+    lateinit var viewModelProvider: ViewModelProvidersWrapper
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
