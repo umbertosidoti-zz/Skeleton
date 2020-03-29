@@ -1,4 +1,4 @@
-package com.umbo.skeleton
+package com.umbo.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.whenever
@@ -6,8 +6,8 @@ import com.umbo.data.Destination
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import com.umbo.data.ListInteractor
-import com.umbo.skeleton.list.ListViewModel
-import com.umbo.skeleton.list.PostToViewStateMapper
+import com.umbo.presentation.list.ListViewModel
+import com.umbo.presentation.list.PostToViewStateMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert

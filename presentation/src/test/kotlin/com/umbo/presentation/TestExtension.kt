@@ -1,4 +1,4 @@
-package com.umbo.skeleton
+package com.umbo.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

@@ -59,10 +59,7 @@ dependencies {
     kapt(Libraries.daggerCompile)
 
     implementation(AndroidTestLibraries.espressoIdling)
-    testImplementation(AndroidTestLibraries.archCore)
-    testImplementation(TestLibraries.junit)
-    testImplementation(TestLibraries.mockito)
-    testImplementation(TestLibraries.coroutinesTest)
+
 
     androidTestImplementation(AndroidTestLibraries.runner)
     androidTestImplementation(TestLibraries.junit)

@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-android-extensions")
+    id("com.umbo.androidcoverage")
 }
 
 android {
@@ -50,6 +51,11 @@ dependencies {
     implementation(AndroidLibraries.androidxLifecycleViewModel)
 
     testImplementation(TestLibraries.junit)
+    testImplementation(AndroidTestLibraries.archCore)
+    testImplementation(TestLibraries.junit)
+    testImplementation(TestLibraries.mockito)
+    testImplementation(TestLibraries.coroutinesTest)
+
     androidTestImplementation(AndroidTestLibraries.runner)
     androidTestImplementation(AndroidTestLibraries.espressoCore)
 }
