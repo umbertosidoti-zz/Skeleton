@@ -3,7 +3,6 @@ package com.umbo.di
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 
 interface ViewModelProvidersWrapper {
     fun of(activity: AppCompatActivity): ViewModelProvider
@@ -14,11 +13,11 @@ class ViewModelProvidersWrapperImpl(private val factory: ViewModelProvider.Facto
     ViewModelProvidersWrapper {
 
     override fun of(fragment: Fragment): ViewModelProvider {
-        return ViewModelProviders.of(fragment, factory)
+        return ViewModelProvider(fragment, factory)
     }
 
     override fun of(activity: AppCompatActivity): ViewModelProvider {
-        return ViewModelProviders.of(activity, factory)
+        return ViewModelProvider(activity, factory)
     }
 
 }
