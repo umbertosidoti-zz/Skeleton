@@ -4,6 +4,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.NetworkService
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
+import com.umbo.domain.repository.PhotosRepositoryImpl
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -26,7 +27,10 @@ class PhotosRepositoryImplTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        photosRepository = PhotosRepositoryImpl(networkService, storage)
+        photosRepository = PhotosRepositoryImpl(
+            networkService,
+            storage
+        )
     }
 
     @Test

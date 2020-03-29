@@ -1,9 +1,11 @@
-package com.umbo.domain
+package com.umbo.domain.interactor
 
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
+import com.umbo.domain.repository.PhotosRepository
 
-class DetailInteractorImpl(private val photosRepository: PhotosRepository): DetailInteractor {
+class DetailInteractorImpl(private val photosRepository: PhotosRepository):
+    DetailInteractor {
 
     override suspend fun findPhoto(id: Int): Outcome<Photo> {
         val outcome = photosRepository.photos()

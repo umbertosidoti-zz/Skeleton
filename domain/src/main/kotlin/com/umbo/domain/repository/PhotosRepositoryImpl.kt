@@ -1,8 +1,9 @@
-package com.umbo.domain
+package com.umbo.domain.repository
 
 import com.umbo.data.NetworkService
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
+import com.umbo.domain.PhotosStorage
 
 class PhotosRepositoryImpl(
     private val networkService: NetworkService,

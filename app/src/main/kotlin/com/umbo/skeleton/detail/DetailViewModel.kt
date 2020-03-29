@@ -2,7 +2,7 @@ package com.umbo.skeleton.detail
 
 import androidx.lifecycle.viewModelScope
 import com.umbo.data.Outcome
-import com.umbo.domain.DetailInteractor
+import com.umbo.domain.interactor.DetailInteractor
 import com.umbo.skeleton.core.BaseViewModelLiveData
 import com.umbo.skeleton.di.corutines.IO
 import kotlinx.coroutines.CoroutineDispatcher

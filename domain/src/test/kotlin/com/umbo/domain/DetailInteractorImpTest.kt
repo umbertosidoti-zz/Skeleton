@@ -3,6 +3,8 @@ package com.umbo.domain
 import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
+import com.umbo.domain.interactor.DetailInteractorImpl
+import com.umbo.domain.repository.PhotosRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
@@ -21,7 +23,8 @@ class DetailInteractorImpTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        detailInteractor = DetailInteractorImpl((photosRepository))
+        detailInteractor =
+            DetailInteractorImpl((photosRepository))
     }
 
     @Test

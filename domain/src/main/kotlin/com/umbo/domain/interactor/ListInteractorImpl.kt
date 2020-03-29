@@ -1,8 +1,8 @@
-package com.umbo.domain
+package com.umbo.domain.interactor
 
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
-import kotlinx.coroutines.delay
+import com.umbo.domain.repository.PhotosRepository
 
 class ListInteractorImpl(
     private val repository: PhotosRepository

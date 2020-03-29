@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
-import com.umbo.domain.DetailInteractor
+import com.umbo.domain.interactor.DetailInteractor
 import com.umbo.skeleton.detail.DetailViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking

@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.umbo.data.Destination
 import com.umbo.data.NavigationCommand
 import com.umbo.data.Outcome
-import com.umbo.domain.ListInteractor
+import com.umbo.domain.interactor.ListInteractor
 import com.umbo.skeleton.core.BaseViewModelLiveData
 import com.umbo.skeleton.di.corutines.IO
 import kotlinx.coroutines.CoroutineDispatcher

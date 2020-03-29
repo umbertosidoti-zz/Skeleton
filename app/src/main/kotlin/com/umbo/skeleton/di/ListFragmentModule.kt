@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.umbo.data_android.ImageLoader
 import com.umbo.di.ViewModelKey
 import com.umbo.di.scope.FragmentScope
-import com.umbo.domain.*
+import com.umbo.domain.interactor.ListInteractor
+import com.umbo.domain.interactor.ListInteractorImpl
+import com.umbo.domain.repository.PhotosRepository
 import com.umbo.skeleton.list.ListRecylerViewAdapter
 import com.umbo.skeleton.list.ListViewModel
 import com.umbo.skeleton.list.PostToViewStateMapper
@@ -19,7 +21,8 @@ class ListFragmentModule {
     @Provides
     @FragmentScope
     fun provideListInteractor(repository: PhotosRepository)
-            : ListInteractor = ListInteractorImpl(repository)
+            : ListInteractor =
+        ListInteractorImpl(repository)
 
     @Provides
     fun providePostToViewStateMapper() = PostToViewStateMapper()
