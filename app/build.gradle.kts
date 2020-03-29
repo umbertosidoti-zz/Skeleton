@@ -60,7 +60,6 @@ dependencies {
 
     implementation(AndroidTestLibraries.espressoIdling)
 
-
     androidTestImplementation(AndroidTestLibraries.runner)
     androidTestImplementation(TestLibraries.junit)
     androidTestImplementation(AndroidTestLibraries.espressoCore)

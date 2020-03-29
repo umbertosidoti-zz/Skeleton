@@ -4,8 +4,10 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import com.umbo.data.PhotosStorage
+import com.umbo.domain.mapper.NetworkPhotoToPhotoMapper
 import com.umbo.domain.repository.PhotosRepositoryImpl
-import com.umbo.network.data.NetworkService
+import com.umbo.network_interface.NetworkOutcome
+import com.umbo.network_interface.NetworkService
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -30,7 +32,8 @@ class PhotosRepositoryImplTest {
         MockitoAnnotations.initMocks(this)
         photosRepository = PhotosRepositoryImpl(
             networkService,
-            storage
+            storage,
+            NetworkPhotoToPhotoMapper()
         )
     }
 
@@ -38,7 +41,7 @@ class PhotosRepositoryImplTest {
     fun testPhotosFromCacheErrorEndNetworkError() = runBlocking {
         //Given
         whenever(storage.photos).thenReturn(Outcome.Error())
-        whenever(networkService.photos()).thenReturn(Outcome.Error())
+        whenever(networkService.photos()).thenReturn(NetworkOutcome.Error())
 
         //When
         val photos = photosRepository.photos()
@@ -53,7 +56,7 @@ class PhotosRepositoryImplTest {
     fun testPhotosFromCacheEmptyEndNetworkError() = runBlocking {
         //Given
         whenever(storage.photos).thenReturn(Outcome.Success(emptyList()))
-        whenever(networkService.photos()).thenReturn(Outcome.Error())
+        whenever(networkService.photos()).thenReturn(NetworkOutcome.Error())
 
         //When
         val photos = photosRepository.photos()
@@ -68,7 +71,7 @@ class PhotosRepositoryImplTest {
     fun testPhotosFromCache() = runBlocking {
         //Given
         whenever(storage.photos).thenReturn(Outcome.Success(listOf(Photo(1,1,"","",""))))
-        whenever(networkService.photos()).thenReturn(Outcome.Error())
+        whenever(networkService.photos()).thenReturn(NetworkOutcome.Error())
 
         //When
         val photos = photosRepository.photos()
@@ -83,7 +86,7 @@ class PhotosRepositoryImplTest {
     fun testPhotosFromNetworkWithError() = runBlocking {
         //Given
         whenever(storage.photos).thenReturn(Outcome.Success(listOf(Photo(1,1,"","",""))))
-        whenever(networkService.photos()).thenReturn(Outcome.Error())
+        whenever(networkService.photos()).thenReturn(NetworkOutcome.Error())
 
         //When
         val photos = photosRepository.photos(false)
@@ -98,7 +101,7 @@ class PhotosRepositoryImplTest {
     fun testPhotosFromNetwork() = runBlocking {
         //Given
         whenever(storage.photos).thenReturn(Outcome.Success(listOf(Photo(1,1,"","",""))))
-        whenever(networkService.photos()).thenReturn(Outcome.Success(emptyList()))
+        whenever(networkService.photos()).thenReturn(NetworkOutcome.Success(emptyList()))
 
         //When
         val photos = photosRepository.photos(false)
