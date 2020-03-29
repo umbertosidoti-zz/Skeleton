@@ -2,6 +2,7 @@ package com.umbo.domain
 
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
+import com.umbo.data.PhotosStorage
 
 class PhotosStorageImpl: PhotosStorage {
 

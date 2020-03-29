@@ -1,8 +1,8 @@
 package com.umbo.skeleton.di
 
-import com.umbo.skeleton.di.corutines.Default
-import com.umbo.skeleton.di.corutines.IO
-import com.umbo.skeleton.di.corutines.Main
+import com.umbo.data.corutines.Default
+import com.umbo.data.corutines.IO
+import com.umbo.data.corutines.Main
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher

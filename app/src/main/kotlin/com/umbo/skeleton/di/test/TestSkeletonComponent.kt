@@ -1,9 +1,9 @@
 package com.umbo.skeleton.di.test
 
 import android.app.Application
-import com.umbo.di.network.RetrofitModule
+import com.umbo.skeleton.di.RetrofitModule
 import com.umbo.di.ViewModelFactoryModule
-import com.umbo.di.image.GlideModule
+import com.umbo.skeleton.di.GlideModule
 import com.umbo.skeleton.di.ActivitiesModule
 import com.umbo.skeleton.di.SkeletonModule
 import dagger.BindsInstance

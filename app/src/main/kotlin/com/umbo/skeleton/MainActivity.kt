@@ -3,8 +3,8 @@ package com.umbo.skeleton
 import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.umbo.skeleton.core.HasRouter
-import com.umbo.skeleton.core.Router
+import com.umbo.data.Router
+import com.umbo.presentation.core.HasRouter
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 

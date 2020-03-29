@@ -33,7 +33,7 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(project(path = ":data_and_interface_android"))
+    implementation(project(path = ":presentation_interface"))
 
     implementation(Libraries.kotlin)
     implementation(AndroidLibraries.androidxAppcompat)

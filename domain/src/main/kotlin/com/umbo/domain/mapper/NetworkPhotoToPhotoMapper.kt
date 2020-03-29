@@ -1,5 +1,6 @@
 package com.umbo.domain.mapper
 
+import com.umbo.data.Mapper
 import com.umbo.data.Photo
 import com.umbo.network_interface.NetworkPhoto
 

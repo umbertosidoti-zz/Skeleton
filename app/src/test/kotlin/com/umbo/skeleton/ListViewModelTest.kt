@@ -5,7 +5,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.Destination
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
-import com.umbo.domain.interactor.ListInteractor
+import com.umbo.data.ListInteractor
 import com.umbo.skeleton.list.ListViewModel
 import com.umbo.skeleton.list.PostToViewStateMapper
 import kotlinx.coroutines.Dispatchers

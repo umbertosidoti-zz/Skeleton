@@ -1,15 +1,15 @@
 package com.umbo.skeleton.di
 
 import androidx.lifecycle.ViewModel
-import com.umbo.data_android.ImageLoader
+import com.umbo.data.ImageLoader
 import com.umbo.di.ViewModelKey
 import com.umbo.di.scope.FragmentScope
-import com.umbo.domain.interactor.ListInteractor
+import com.umbo.data.ListInteractor
 import com.umbo.domain.interactor.ListInteractorImpl
 import com.umbo.domain.repository.PhotosRepository
-import com.umbo.skeleton.list.ListRecylerViewAdapter
-import com.umbo.skeleton.list.ListViewModel
-import com.umbo.skeleton.list.PostToViewStateMapper
+import com.umbo.presentation.list.ListRecylerViewAdapter
+import com.umbo.presentation.list.ListViewModel
+import com.umbo.presentation.list.PostToViewStateMapper
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

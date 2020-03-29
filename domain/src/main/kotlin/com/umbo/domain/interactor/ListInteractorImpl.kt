@@ -1,5 +1,6 @@
 package com.umbo.domain.interactor
 
+import com.umbo.data.ListInteractor
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import com.umbo.domain.repository.PhotosRepository

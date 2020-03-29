@@ -1,10 +1,11 @@
 include(
     ":app",
     ":domain",
-    ":data_and_interface",
+    ":domain_interface",
     ":network",
     ":network_interface",
     ":di",
-    ":data_and_interface_android",
+    ":presentation",
+    ":presentation_interface",
     ":glide_image_loader"
 )

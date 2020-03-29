@@ -8,7 +8,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libraries.kotlin)
 
-    implementation (project(path = ":data_and_interface"))
+    implementation (project(path = ":domain_interface"))
     implementation (project(path = ":network_interface"))
 
     implementation(Libraries.coroutines)

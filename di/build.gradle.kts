@@ -40,8 +40,7 @@ dependencies {
 
     implementation(project(path = ":network"))
     implementation(project(path = ":network_interface"))
-    implementation(project(path = ":data_and_interface_android"))
-    implementation(project(path = ":glide_image_loader"))
+    implementation(project(path = ":presentation_interface"))
 
     implementation(Libraries.dagger)
     implementation(Libraries.daggerAndroid)
@@ -51,9 +50,6 @@ dependencies {
     implementation(AndroidLibraries.androidxLifecycleExtension)
     implementation(AndroidLibraries.androidxLifecycleViewModel)
     implementation(AndroidLibraries.androidxAppcompat)
-    implementation(Libraries.retrofit)
-    implementation(Libraries.moshi)
-    implementation(Libraries.okhttp)
 
     testImplementation(TestLibraries.junit)
     androidTestImplementation(AndroidTestLibraries.runner)

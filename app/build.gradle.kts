@@ -33,12 +33,14 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(project(":data_and_interface"))
-    implementation(project(":data_and_interface_android"))
+    implementation(project(":presentation_interface"))
+    implementation(project(":presentation"))
+    implementation(project(":domain_interface"))
     implementation(project(":domain"))
-    implementation(project(":network"))
     implementation(project(":network_interface"))
+    implementation(project(":network"))
     implementation(project(":di"))
+    implementation(project(path = ":glide_image_loader"))
 
     implementation(Libraries.kotlin)
     implementation(Libraries.coroutines)
@@ -54,6 +56,10 @@ dependencies {
     implementation(Libraries.dagger)
     implementation(Libraries.daggerAndroid)
     implementation(Libraries.daggerSupport)
+    implementation(Libraries.okhttp)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.moshi)
+
     kapt(Libraries.daggerProcessor)
     kapt(Libraries.daggerCompile)
 

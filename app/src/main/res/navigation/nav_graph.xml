@@ -6,7 +6,7 @@
             android:id="@+id/nav_graph">
     <fragment
             android:id="@+id/listFragment"
-            android:name="com.umbo.skeleton.list.ListFragment"
+            android:name="com.umbo.presentation.list.ListFragment"
             android:label="list_fragment"
             tools:layout="@layout/list_fragment">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
             android:id="@+id/detailFragment"
-            android:name="com.umbo.skeleton.detail.DetailFragment"
+            android:name="com.umbo.presentation.detail.DetailFragment"
             android:label="DetailFragment"
             tools:layout="@layout/detail_fragment"/>
 

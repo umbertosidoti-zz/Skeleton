@@ -3,6 +3,7 @@ package com.umbo.domain
 import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
+import com.umbo.data.PhotosStorage
 import com.umbo.domain.repository.PhotosRepositoryImpl
 import com.umbo.network.data.NetworkService
 import kotlinx.coroutines.runBlocking

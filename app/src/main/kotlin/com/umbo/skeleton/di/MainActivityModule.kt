@@ -2,10 +2,10 @@ package com.umbo.skeleton.di
 
 import com.umbo.di.ProviderFactoryWrapper
 import com.umbo.di.scope.ActivityScope
-import com.umbo.domain.PhotosStorage
+import com.umbo.data.PhotosStorage
+import com.umbo.data.Router
 import com.umbo.domain.PhotosStorageImpl
-import com.umbo.skeleton.core.Router
-import com.umbo.skeleton.core.RouterImpl
+import com.umbo.skeleton.routing.RouterImpl
 import dagger.Module
 import dagger.Provides
 

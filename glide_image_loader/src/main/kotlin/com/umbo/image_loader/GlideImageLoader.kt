@@ -3,7 +3,7 @@ package com.umbo.image_loader
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.umbo.data_android.ImageLoader
+import com.umbo.data.ImageLoader
 
 class GlideImageLoader: ImageLoader {
 

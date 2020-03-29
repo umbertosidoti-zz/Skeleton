@@ -4,8 +4,8 @@ import com.umbo.data.Photo
 import com.umbo.di.scope.FragmentScope
 import com.umbo.domain.repository.PhotosRepository
 import com.umbo.domain.repository.PhotosRepositoryImpl
-import com.umbo.domain.PhotosStorage
-import com.umbo.domain.mapper.Mapper
+import com.umbo.data.PhotosStorage
+import com.umbo.data.Mapper
 import com.umbo.domain.mapper.NetworkPhotoToPhotoMapper
 import com.umbo.network_interface.NetworkPhoto
 import com.umbo.network_interface.NetworkService
