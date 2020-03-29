@@ -14,6 +14,7 @@ object AndroidLibraries {
         const val androidxLegacy = "1.0.0"
         const val androidxLifecycle = "2.2.0"
         const val androidxNavigation = "2.2.0"
+        const val androidRecyclerView = "1.0.0"
     }
 
     val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.androidxAppcompat}"
@@ -24,6 +25,7 @@ object AndroidLibraries {
     val androidxLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidxLifecycle}"
     val androidxNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
     val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
+    val androidRecyclerView = "androidx.recyclerview:recyclerview:${Versions.androidRecyclerView}"
 }
 
 object Libraries {

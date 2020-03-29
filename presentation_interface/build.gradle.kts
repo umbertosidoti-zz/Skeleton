@@ -41,10 +41,8 @@ dependencies {
     implementation(project(":domain_interface"))
 
     implementation(Libraries.daggerSupport)
-    implementation(AndroidLibraries.androidxNavigationFragment)
     implementation(AndroidLibraries.androidxNavigationUi)
 
-    implementation(AndroidLibraries.androidxAppcompat)
     testImplementation(TestLibraries.junit)
     androidTestImplementation(AndroidTestLibraries.runner)
     androidTestImplementation(AndroidTestLibraries.espressoCore)

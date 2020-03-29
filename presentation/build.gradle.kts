@@ -45,8 +45,7 @@ dependencies {
     implementation(Libraries.daggerSupport)
     implementation(Libraries.coroutines)
     implementation(AndroidLibraries.androidxAppcompat)
-    implementation(AndroidLibraries.androidxNavigationFragment)
-    implementation(AndroidLibraries.androidxNavigationUi)
+    implementation(AndroidLibraries.androidRecyclerView)
     implementation(AndroidLibraries.androidxLifecycleExtension)
     implementation(AndroidLibraries.androidxLifecycleViewModel)
 

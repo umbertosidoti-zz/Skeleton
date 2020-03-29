@@ -40,17 +40,12 @@ dependencies {
     implementation(project(":network_interface"))
     implementation(project(":network"))
     implementation(project(":di"))
-    implementation(project(path = ":glide_image_loader"))
+    implementation(project(":glide_image_loader"))
 
     implementation(Libraries.kotlin)
     implementation(Libraries.coroutines)
 
-    implementation(AndroidLibraries.androidxAppcompat)
-    implementation(AndroidLibraries.androidxCore)
     implementation(AndroidLibraries.androidxConstraintlayout)
-    implementation(AndroidLibraries.androidxLegacy)
-    implementation(AndroidLibraries.androidxLifecycleExtension)
-    implementation(AndroidLibraries.androidxLifecycleViewModel)
     implementation(AndroidLibraries.androidxNavigationFragment)
     implementation(AndroidLibraries.androidxNavigationUi)
     implementation(Libraries.dagger)
