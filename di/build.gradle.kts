@@ -38,7 +38,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libraries.kotlin)
 
-    implementation(project(path = ":retrofit_network"))
+    implementation(project(path = ":network"))
     implementation(project(path = ":data_and_interface_android"))
     implementation(project(path = ":glide_image_loader"))
 
