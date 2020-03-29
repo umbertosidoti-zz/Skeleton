@@ -3,6 +3,7 @@ include(
     ":domain",
     ":data_and_interface",
     ":network",
+    ":network_interface",
     ":di",
     ":data_and_interface_android",
     ":glide_image_loader"

@@ -1,13 +1,17 @@
 package com.umbo.domain.repository
 
-import com.umbo.data.NetworkService
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import com.umbo.domain.PhotosStorage
+import com.umbo.domain.mapper.Mapper
+import com.umbo.network_interface.NetworkOutcome
+import com.umbo.network_interface.NetworkPhoto
+import com.umbo.network_interface.NetworkService
 
 class PhotosRepositoryImpl(
     private val networkService: NetworkService,
-    private val storage: PhotosStorage
+    private val storage: PhotosStorage,
+    private val mapper: Mapper<NetworkPhoto, Photo?>
 ) : PhotosRepository {
 
     override suspend fun photos(dataFromCache: Boolean): Outcome<List<Photo>> {
@@ -25,10 +29,9 @@ class PhotosRepositoryImpl(
     }
 
     private suspend fun photoFromNetwork(): Outcome<List<Photo>> {
-        return networkService.photos().also { photos ->
-            (photos as? Outcome.Success)?.value?.let {
-                storage.replacePhotos(it)
-            }
+        return when(val outcome = networkService.photos()) {
+            is NetworkOutcome.Success -> Outcome.Success(outcome.value.mapNotNull { mapper.map(it)})
+            is NetworkOutcome.Error -> Outcome.Error()
         }
     }
 }

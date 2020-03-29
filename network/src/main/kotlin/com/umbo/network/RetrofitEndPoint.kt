@@ -1,5 +1,6 @@
 package com.umbo.network
 
+import com.umbo.network_interface.NetworkPhoto
 import retrofit2.Response
 import retrofit2.http.GET
 

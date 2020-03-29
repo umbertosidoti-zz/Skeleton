@@ -39,6 +39,7 @@ dependencies {
     implementation(Libraries.kotlin)
 
     implementation(project(path = ":network"))
+    implementation(project(path = ":network_interface"))
     implementation(project(path = ":data_and_interface_android"))
     implementation(project(path = ":glide_image_loader"))
 

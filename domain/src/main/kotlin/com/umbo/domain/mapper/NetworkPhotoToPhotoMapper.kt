@@ -1,6 +1,7 @@
-package com.umbo.network
+package com.umbo.domain.mapper
 
 import com.umbo.data.Photo
+import com.umbo.network_interface.NetworkPhoto
 
 class NetworkPhotoToPhotoMapper : Mapper<NetworkPhoto, Photo?> {
     override fun map(input: NetworkPhoto): Photo? {

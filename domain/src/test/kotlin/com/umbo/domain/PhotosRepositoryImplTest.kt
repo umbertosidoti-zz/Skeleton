@@ -1,10 +1,10 @@
 package com.umbo.domain
 
 import com.nhaarman.mockitokotlin2.whenever
-import com.umbo.data.NetworkService
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import com.umbo.domain.repository.PhotosRepositoryImpl
+import com.umbo.network.data.NetworkService
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
 import org.junit.Before

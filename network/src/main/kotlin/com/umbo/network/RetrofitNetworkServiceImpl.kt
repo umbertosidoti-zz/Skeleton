@@ -1,20 +1,21 @@
 package com.umbo.network
 
-import com.umbo.data.NetworkService
-import com.umbo.data.Outcome
-import com.umbo.data.Photo
+import com.umbo.network_interface.NetworkOutcome
+import com.umbo.network_interface.NetworkPhoto
+import com.umbo.network_interface.NetworkService
 
-class RetrofitNetworkServiceImpl(private val endPoint: RetrofitEndPoint) : NetworkService {
 
-    override suspend fun photos(): Outcome<List<Photo>> {
-        val mapper = NetworkPhotoToPhotoMapper()
+class RetrofitNetworkServiceImpl(private val endPoint: RetrofitEndPoint) :
+    NetworkService {
+
+    override suspend fun photos(): NetworkOutcome<List<NetworkPhoto>> {
         val response = endPoint.getPhotos()
         val result = if (response.isSuccessful) {
-            response.body()?.mapNotNull { mapper.map(it) }
+            response.body()
         } else {
             null
         }
 
-        return if (result != null) Outcome.Success(result) else Outcome.Error()
+        return if (result != null) NetworkOutcome.Success(result) else NetworkOutcome.Error()
     }
 }

@@ -6,10 +6,7 @@ plugins {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libraries.kotlin)
-    implementation(Libraries.retrofit)
     implementation(Libraries.moshi)
-
-    implementation (project(path = ":network_interface"))
 }
 
 repositories {

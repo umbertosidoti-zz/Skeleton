@@ -1,9 +1,9 @@
 package com.umbo.di.network
 
-import com.umbo.data.NetworkService
 import com.umbo.network.RetrofitEndPoint
 import com.umbo.network.RetrofitEndPoint.Companion.BASE_URL
 import com.umbo.network.RetrofitNetworkServiceImpl
+import com.umbo.network_interface.NetworkService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

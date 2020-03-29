@@ -36,6 +36,8 @@ dependencies {
     implementation(project(":data_and_interface"))
     implementation(project(":data_and_interface_android"))
     implementation(project(":domain"))
+    implementation(project(":network"))
+    implementation(project(":network_interface"))
     implementation(project(":di"))
 
     implementation(Libraries.kotlin)

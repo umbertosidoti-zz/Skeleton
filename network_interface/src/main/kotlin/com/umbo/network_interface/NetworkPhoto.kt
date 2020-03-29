@@ -1,4 +1,4 @@
-package com.umbo.network
+package com.umbo.network_interface
 
 import com.squareup.moshi.Json
 
