@@ -45,8 +45,8 @@ object Libraries {
     val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     val daggerCompile = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
-    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.coroutines}"
-    val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.moshi}"
     val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
