@@ -41,6 +41,7 @@ dependencies {
 
     implementation(project(":domain_interface"))
     implementation(project(":presentation_interface"))
+    implementation(project(":di_core"))
 
     implementation(Libraries.daggerSupport)
     implementation(Libraries.coroutines)
