@@ -15,10 +15,10 @@ import javax.inject.Inject
 class ListViewModel @Inject constructor(@IO private val dispatcher: CoroutineDispatcher,
                                         private val interactor: ListInteractor,
                                         private val postToViewStateMapper: PostToViewStateMapper
-) : BaseViewModelLiveData<Outcome<List<PhotoViewState>>>() {
+) : BaseViewModelLiveData<Outcome<List<PhotoViewState>>>(dispatcher) {
 
     override fun start() {
-        viewModelScope.launch(dispatcher) {
+        doAsync {
             val viewState = when (val result = interactor.photos()) {
                 is Outcome.Success -> Outcome.Success(result.value.map { postToViewStateMapper.map(it) })
                 is Outcome.Error -> Outcome.Error()
@@ -29,7 +29,7 @@ class ListViewModel @Inject constructor(@IO private val dispatcher: CoroutineDis
     }
 
     fun onItemClick(id: Int) {
-        viewModelScope.launch(dispatcher) {
+        doAsync {
             val photoId = (interactor.photos() as? Outcome.Success)?.value?.find { it.id == id }
             if (photoId != null) {
                 navigationAction.postValue(NavigationCommand(Destination.DETAIL, id))
