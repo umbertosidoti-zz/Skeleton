@@ -1,12 +1,10 @@
 package com.umbo.presentation.detail
 
-import androidx.lifecycle.viewModelScope
 import com.umbo.data.DetailInteractor
 import com.umbo.data.Outcome
 import com.umbo.data.corutines.IO
 import com.umbo.presentation.core.BaseViewModelLiveData
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailViewModel @Inject constructor(@IO private val dispatcher: CoroutineDispatcher, private val interactor: DetailInteractor) :
@@ -18,7 +16,7 @@ class DetailViewModel @Inject constructor(@IO private val dispatcher: CoroutineD
         doAsync {
             payload?.let {
                 when (val outcome = interactor.findPhoto(it)) {
-                    is Outcome.Success -> liveData.postValue(
+                    is Outcome.Success -> mutableLiveData.postValue(
                         Outcome.Success(
                             DetailViewState(
                                 outcome.value.title,
@@ -27,9 +25,9 @@ class DetailViewModel @Inject constructor(@IO private val dispatcher: CoroutineD
                             )
                         )
                     )
-                    is Outcome.Error -> liveData.postValue(Outcome.Error())
+                    is Outcome.Error -> mutableLiveData.postValue(Outcome.Error())
                 }
-            } ?: liveData.postValue(Outcome.Error())
+            } ?: mutableLiveData.postValue(Outcome.Error())
         }
     }
 }

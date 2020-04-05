@@ -1,5 +1,6 @@
 package com.umbo.presentation.core
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +12,9 @@ import kotlinx.coroutines.launch
 abstract class BaseViewModelLiveData<T>(private val dispatcher: CoroutineDispatcher) :
     ViewModel() {
 
-    val liveData: MutableLiveData<T> by lazy {
+    val liveData: LiveData<T> get() =  mutableLiveData
+
+    protected val mutableLiveData: MutableLiveData<T> by lazy {
         MutableLiveData<T>().also {
             start()
         }
