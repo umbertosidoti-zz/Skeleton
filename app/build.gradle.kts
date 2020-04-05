@@ -38,7 +38,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":network_interface"))
     implementation(project(":network"))
-    implementation(project(":di"))
+    implementation(project(":di_core"))
     implementation(project(":glide_image_loader"))
 
     implementation(Libraries.kotlin)

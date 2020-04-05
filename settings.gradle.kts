@@ -4,7 +4,7 @@ include(
     ":domain_interface",
     ":network",
     ":network_interface",
-    ":di",
+    ":di_core",
     ":presentation",
     ":presentation_interface",
     ":glide_image_loader"
