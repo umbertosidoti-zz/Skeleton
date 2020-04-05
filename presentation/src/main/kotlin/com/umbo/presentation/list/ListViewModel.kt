@@ -8,10 +8,11 @@ import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 class ListViewModel @Inject constructor(
-    @IO private val dispatcher: CoroutineDispatcher,
+    @IO dispatcher: CoroutineDispatcher,
+    navigator: Navigator,
     private val interactor: ListInteractor,
     private val postToViewStateMapper: PostToViewStateMapper
-) : BaseViewModelLiveData<Outcome<List<PhotoViewState>>>(dispatcher) {
+) : BaseViewModelLiveData<Outcome<List<PhotoViewState>>>(dispatcher, navigator) {
 
     override fun start() {
         doAsync {
@@ -31,12 +32,10 @@ class ListViewModel @Inject constructor(
     fun onItemClick(id: Int) {
         doAsync {
             (interactor.navigationPayload(id) as? Outcome.Success)?.value?.let {
-                navigationAction.postValue(
-                    NavigationCommand(
-                        Destination.DETAIL,
-                        it
-                    )
-                )
+                routeTo(NavigationCommand(
+                    Destination.DETAIL,
+                    it
+                ))
             } ?: mutableLiveData.postValue(Outcome.Error())
         }
     }

@@ -34,7 +34,7 @@ class ListViewModelTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         mapper = PostToViewStateMapper()
-        viewModel = ListViewModel(Dispatchers.IO, listInteractor, mapper)
+        viewModel = ListViewModel(Dispatchers.IO, listInteractor, mapper,)
     }
 
     @Test

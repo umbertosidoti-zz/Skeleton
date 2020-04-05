@@ -1,22 +1,31 @@
 package com.umbo.skeleton
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.umbo.data.Router
-import com.umbo.presentation.core.HasRouter
+import com.umbo.di.ViewModelProvidersWrapper
+import com.umbo.presentation.core.NavigationViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity(), HasRouter {
+class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
-    override lateinit var router: Router
+    lateinit var router: Router
+
+    @Inject
+    lateinit var viewModelProvider: ViewModelProvidersWrapper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setNavigationController()
+        val viewModel = viewModelProvider.of(this).get(NavigationViewModel::class.java)
+        viewModel.navigationAction.observe(this, Observer {
+            router.routeTo(it)
+        })
     }
 
     private fun setNavigationController() {

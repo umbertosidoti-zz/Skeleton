@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.umbo.data.Outcome
 import com.umbo.di.ViewModelProvidersWrapper
 import com.umbo.presentation.core.BaseFragment
-import com.umbo.presentation.core.HasRouter
 import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
 
@@ -40,12 +39,6 @@ class ListFragment : BaseFragment() {
             when(outcome) {
                 is Outcome.Success -> handleSuccessState(outcome.value)
                 is Outcome.Error -> handleError()
-            }
-        })
-
-        viewModel.navigationAction.observe(viewLifecycleOwner, Observer { action ->
-            action?.let {
-                (activity as? HasRouter)?.router?.routeTo(action)
             }
         })
     }
