@@ -9,18 +9,14 @@ object AndroidSdk {
 object AndroidLibraries {
     private object Versions {
         const val androidxAppcompat = "1.1.0"
-        const val androidxCore = "1.2.0"
         const val androidxConstraintlayout = "1.1.3"
-        const val androidxLegacy = "1.0.0"
         const val androidxLifecycle = "2.2.0"
         const val androidxNavigation = "2.2.0"
         const val androidRecyclerView = "1.0.0"
     }
 
     val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.androidxAppcompat}"
-    val androidxCore = "androidx.core:core-ktx:${Versions.androidxCore}"
     val androidxConstraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.androidxConstraintlayout}"
-    val androidxLegacy = "androidx.legacy:legacy-support-v4:${Versions.androidxLegacy}"
     val androidxLifecycleExtension = "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifecycle}"
     val androidxLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidxLifecycle}"
     val androidxNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
