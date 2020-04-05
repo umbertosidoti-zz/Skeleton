@@ -16,8 +16,8 @@ class PhotosRepositoryImpl(
             val result = storage.photos
             val cachedPhotos = (result as? Outcome.Success)?.value
             if (cachedPhotos.isNullOrEmpty()) {
-                photoFromNetwork().also {
-                    (it as? Outcome.Success)?.let {
+                photoFromNetwork().also { outCome ->
+                    (outCome as? Outcome.Success)?.let {
                         storage.replacePhotos(it.value)
                     }
                 }
@@ -25,8 +25,8 @@ class PhotosRepositoryImpl(
                 result
             }
         } else {
-            photoFromNetwork().also {
-                (it as? Outcome.Success)?.let {
+            photoFromNetwork().also { outCome ->
+                (outCome as? Outcome.Success)?.let {
                     storage.replacePhotos(it.value)
                 }
             }
