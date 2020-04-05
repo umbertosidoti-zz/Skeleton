@@ -1,6 +1,8 @@
 package com.umbo.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.*
 import com.umbo.presentation.list.ListViewModel
@@ -13,6 +15,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
+import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
@@ -72,20 +75,20 @@ class ListViewModelTest {
         Assert.assertTrue(value?.get(0)?.title ?: "" == "success")
     }
 
-/*
     @Test
-    fun testClickItem() {
+    fun testNavigation() {
+
+        val payload = DetailPayload(1)
+
         //Given
         runBlocking {
-            whenever(listInteractor.photos()).thenReturn(Outcome.Success(listOf(Photo(1,1,"success","",""))))
+            whenever(listInteractor.navigationPayload(anyInt())).thenReturn(Outcome.Success(payload))
         }
 
         //Given
         viewModel.onItemClick(1)
-        val value = viewModel.navigationAction.getOrAwaitValue()
 
         //Then
-        Assert.assertTrue((value.payload as? Int) == 1 )
-        Assert.assertTrue(value.destination == Destination.DETAIL)
-    }*/
+        verify(navigator).routeTo(NavigationCommand(Destination.DETAIL, payload))
+    }
 }

@@ -74,4 +74,5 @@ class DetailViewModelTest {
         //Then
         assertTrue(outcome is Outcome.Error)
     }
+
 }
