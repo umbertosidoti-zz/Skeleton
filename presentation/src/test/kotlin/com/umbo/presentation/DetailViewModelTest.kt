@@ -8,6 +8,7 @@ import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import com.umbo.presentation.detail.DetailViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -22,6 +23,11 @@ class DetailViewModelTest {
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
+
+    @ExperimentalCoroutinesApi
+    @get:Rule
+    var rule2 = CoroutineTestRule()
+
 
     lateinit var viewModel: DetailViewModel
 

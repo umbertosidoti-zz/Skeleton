@@ -6,6 +6,7 @@ import com.umbo.data.*
 import com.umbo.presentation.list.ListViewModel
 import com.umbo.presentation.list.PostToViewStateMapper
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before
@@ -20,7 +21,11 @@ class ListViewModelTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
 
-    lateinit var viewModel: ListViewModel
+    @ExperimentalCoroutinesApi
+    @get:Rule
+    var rule2 = CoroutineTestRule()
+
+    private lateinit var viewModel: ListViewModel
 
     @Mock
     lateinit var listInteractor: ListInteractor
