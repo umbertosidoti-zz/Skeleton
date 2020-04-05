@@ -1,4 +1,4 @@
-package com.umbo.domain.repository
+package com.umbo.data
 
 import com.umbo.data.Outcome
 import com.umbo.data.Photo

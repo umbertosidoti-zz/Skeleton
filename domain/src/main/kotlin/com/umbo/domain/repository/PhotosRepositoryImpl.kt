@@ -1,9 +1,6 @@
 package com.umbo.domain.repository
 
-import com.umbo.data.Outcome
-import com.umbo.data.Photo
-import com.umbo.data.PhotosStorage
-import com.umbo.data.Mapper
+import com.umbo.data.*
 import com.umbo.network_interface.NetworkOutcome
 import com.umbo.network_interface.NetworkPhoto
 import com.umbo.network_interface.NetworkService

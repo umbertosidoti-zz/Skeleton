@@ -2,7 +2,7 @@ package com.umbo.skeleton.di
 
 import com.umbo.data.Photo
 import com.umbo.di.scope.FragmentScope
-import com.umbo.domain.repository.PhotosRepository
+import com.umbo.data.PhotosRepository
 import com.umbo.domain.repository.PhotosRepositoryImpl
 import com.umbo.data.PhotosStorage
 import com.umbo.data.Mapper

@@ -6,7 +6,7 @@ import com.umbo.di.ViewModelKey
 import com.umbo.di.scope.FragmentScope
 import com.umbo.data.ListInteractor
 import com.umbo.domain.interactor.ListInteractorImpl
-import com.umbo.domain.repository.PhotosRepository
+import com.umbo.data.PhotosRepository
 import com.umbo.presentation.list.ListRecylerViewAdapter
 import com.umbo.presentation.list.ListViewModel
 import com.umbo.presentation.list.PostToViewStateMapper

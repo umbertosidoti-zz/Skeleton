@@ -3,7 +3,7 @@ package com.umbo.domain
 import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.Outcome
 import com.umbo.domain.interactor.ListInteractorImpl
-import com.umbo.domain.repository.PhotosRepository
+import com.umbo.data.PhotosRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before

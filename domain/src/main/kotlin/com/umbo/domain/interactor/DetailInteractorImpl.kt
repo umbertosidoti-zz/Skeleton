@@ -3,7 +3,7 @@ package com.umbo.domain.interactor
 import com.umbo.data.DetailInteractor
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
-import com.umbo.domain.repository.PhotosRepository
+import com.umbo.data.PhotosRepository
 
 class DetailInteractorImpl(private val photosRepository: PhotosRepository):
     DetailInteractor {
