@@ -7,6 +7,7 @@ import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.*
 import com.umbo.presentation.list.ListViewModel
+import com.umbo.presentation.list.PhotoViewState
 import com.umbo.presentation.list.PostToViewStateMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -16,9 +17,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
+import java.util.*
 
 class ListViewModelTest {
 
@@ -97,16 +98,25 @@ class ListViewModelTest {
     fun testNavigationError() {
 
         val payload = DetailPayload(1)
+        var viewstate : Outcome<List<PhotoViewState>>? = null
 
         //Given
         runBlocking {
             whenever(listInteractor.navigationPayload(1)).thenReturn(Outcome.Error())
         }
 
+        val observer = androidx.lifecycle.Observer<Outcome<List<PhotoViewState>>> {
+            viewstate = it
+        }
+        viewModel.liveData.observeForever (observer)
+
         //Given
         viewModel.onItemClick(1)
 
         //Then
         verify(navigator, never()).routeTo(any())
+        assert(viewstate is Outcome.Error)
+
+        viewModel.liveData.removeObserver(observer)
     }
 }
