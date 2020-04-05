@@ -6,6 +6,10 @@ object AndroidSdk {
     const val kotlin = "1.3.41"
 }
 
+object Plugins {
+    const val kotlinSerialization = "1.3.70"
+}
+
 object AndroidLibraries {
     private object Versions {
         const val androidxAppcompat = "1.1.0"
@@ -32,6 +36,7 @@ object Libraries {
         const val moshi = "2.6.1"
         const val okhttp = "4.3.1"
         const val glide = "4.9.0"
+        const val kotlinSerialization = "0.20.0"
     }
 
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${AndroidSdk.kotlin}"
@@ -45,6 +50,7 @@ object Libraries {
     val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.moshi}"
     val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    val kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.kotlinSerialization}"
 }
 
 object AndroidTestLibraries {
