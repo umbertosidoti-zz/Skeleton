@@ -15,13 +15,13 @@ abstract class BaseViewModelLiveData<T>(protected val dispatcher: CoroutineDispa
 
     private val mutableLiveData: MutableLiveData<T> by lazy {
         MutableLiveData<T>().also {
-            onStart()
+            onStartObserve()
         }
     }
 
     val liveData: LiveData<T> get() =  mutableLiveData
 
-    protected open fun onStart() {
+    protected open fun onStartObserve() {
 
     }
 

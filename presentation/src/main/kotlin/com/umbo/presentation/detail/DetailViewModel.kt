@@ -15,7 +15,7 @@ class DetailViewModel @Inject constructor(
 ) :
     BaseViewModelLiveData<Outcome<DetailViewState>>(dispatcher, navigator) {
 
-    override fun onStart() {
+    override fun onStartObserve() {
         doAsync {
             when (val outcome = interactor.findPhoto()) {
                 is Outcome.Success -> postValue(
