@@ -18,7 +18,7 @@ class DetailViewModel @Inject constructor(
     override fun start() {
         doAsync {
             when (val outcome = interactor.findPhoto()) {
-                is Outcome.Success -> mutableLiveData.postValue(
+                is Outcome.Success -> postValue(
                     Outcome.Success(
                         DetailViewState(
                             outcome.value.title,
@@ -27,7 +27,7 @@ class DetailViewModel @Inject constructor(
                         )
                     )
                 )
-                is Outcome.Error -> mutableLiveData.postValue(Outcome.Error())
+                is Outcome.Error -> postValue(Outcome.Error())
             }
         }
     }

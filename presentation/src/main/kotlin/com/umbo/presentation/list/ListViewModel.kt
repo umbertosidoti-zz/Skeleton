@@ -25,7 +25,7 @@ class ListViewModel @Inject constructor(
                 is Outcome.Error -> Outcome.Error()
             }
 
-            mutableLiveData.postValue(viewState)
+            postValue(viewState)
         }
     }
 
@@ -36,7 +36,7 @@ class ListViewModel @Inject constructor(
                     Destination.DETAIL,
                     it
                 ))
-            } ?: mutableLiveData.postValue(Outcome.Error())
+            } ?: postValue(Outcome.Error())
         }
     }
 }

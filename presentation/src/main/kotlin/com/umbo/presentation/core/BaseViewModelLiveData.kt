@@ -13,13 +13,13 @@ import kotlinx.coroutines.withContext
 abstract class BaseViewModelLiveData<T>(protected val dispatcher: CoroutineDispatcher, private val navigator: Navigator) :
     ViewModel() {
 
-    val liveData: LiveData<T> get() =  mutableLiveData
-
-    protected val mutableLiveData: MutableLiveData<T> by lazy {
+    private val mutableLiveData: MutableLiveData<T> by lazy {
         MutableLiveData<T>().also {
             start()
         }
     }
+
+    val liveData: LiveData<T> get() =  mutableLiveData
 
     protected open fun start() {
 
@@ -31,6 +31,10 @@ abstract class BaseViewModelLiveData<T>(protected val dispatcher: CoroutineDispa
                 function.invoke()
             }
         }
+    }
+
+    fun postValue(value: T) {
+        mutableLiveData.postValue(value)
     }
 
     fun routeTo(action: NavigationCommand) {
