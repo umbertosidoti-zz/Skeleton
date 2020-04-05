@@ -2,13 +2,10 @@ package com.umbo.data
 
 import kotlinx.serialization.*
 
-sealed class NavigationPayload {
+sealed class NavigationPayload
 
-    object Empty: NavigationPayload()
+object Empty: NavigationPayload()
 
-    @Serializable
-    data class DetailPayload(val id: Int): NavigationPayload()
-
-}
-
+@Serializable
+data class DetailPayload(val id: Int): NavigationPayload()
 
