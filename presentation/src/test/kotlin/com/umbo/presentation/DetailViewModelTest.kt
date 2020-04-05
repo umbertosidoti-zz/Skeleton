@@ -3,6 +3,7 @@ package com.umbo.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.DetailInteractor
+import com.umbo.data.Navigator
 import com.umbo.data.Outcome
 import com.umbo.data.Photo
 import com.umbo.presentation.detail.DetailViewModel
@@ -27,19 +28,21 @@ class DetailViewModelTest {
     @Mock
     lateinit var detailInteractor: DetailInteractor
 
+    @Mock
+    lateinit var navigator: Navigator
+
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        viewModel = DetailViewModel(Dispatchers.IO, detailInteractor)
+        viewModel = DetailViewModel(Dispatchers.IO, navigator, detailInteractor)
     }
 
     @Test
     fun testSuccess() {
         //Given
-        viewModel.payload = 1
 
         runBlocking {
-            whenever(detailInteractor.findPhoto(1)).thenReturn(Outcome.Success(Photo(1, 1, "success", "", "")))
+            whenever(detailInteractor.findPhoto()).thenReturn(Outcome.Success(Photo(1, 1, "success", "", "")))
         }
 
         //Given
@@ -54,26 +57,9 @@ class DetailViewModelTest {
     @Test
     fun testErrorInteractor() {
         //Given
-        viewModel.payload = 1
 
         runBlocking {
-            whenever(detailInteractor.findPhoto(1)).thenReturn(Outcome.Error())
-        }
-
-        //Given
-        val outcome = viewModel.liveData.getOrAwaitValue()
-
-        //Then
-        assertTrue(outcome is Outcome.Error)
-    }
-
-    @Test
-    fun testErrorNoPayload() {
-        //Given
-        viewModel.payload = null
-
-        runBlocking {
-            whenever(detailInteractor.findPhoto(1)).thenReturn(Outcome.Success(Photo(1, 1, "success", "", "")))
+            whenever(detailInteractor.findPhoto()).thenReturn(Outcome.Error())
         }
 
         //Given
