@@ -1,21 +1,21 @@
 package com.umbo.skeleton.routing
 
-import android.os.Bundle
 import androidx.navigation.NavController
 import com.umbo.data.Destination
 import com.umbo.data.NavigationCommand
+import com.umbo.data.NavigationPayloadRepository
 import com.umbo.data.Router
-import com.umbo.data.Router.Companion.PAYLOAD_KEY
 import com.umbo.skeleton.R
 
-class RouterImpl : Router {
+class RouterImpl(private val repository: NavigationPayloadRepository) : Router {
     override fun routeTo(action: NavigationCommand) {
-        val bundle = Bundle()
+
         action.payload?.let {
-            bundle.putSerializable(PAYLOAD_KEY, it)
+            repository.updatePayload(it)
         }
+
         when (action.destination) {
-            Destination.DETAIL -> navController?.navigate(R.id.action_listFragment_to_detailFragment, bundle)
+            Destination.DETAIL -> navController?.navigate(R.id.action_listFragment_to_detailFragment)
         }
     }
 

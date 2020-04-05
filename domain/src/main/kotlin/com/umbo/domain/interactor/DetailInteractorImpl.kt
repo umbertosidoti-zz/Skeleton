@@ -1,14 +1,13 @@
 package com.umbo.domain.interactor
 
-import com.umbo.data.DetailInteractor
-import com.umbo.data.Outcome
-import com.umbo.data.Photo
-import com.umbo.data.PhotosRepository
+import com.umbo.data.*
 
-class DetailInteractorImpl(private val photosRepository: PhotosRepository):
+class DetailInteractorImpl(private val photosRepository: PhotosRepository,
+private val navigationPayloadRepository: NavigationPayloadRepository):
     DetailInteractor {
 
-    override suspend fun findPhoto(id: Int): Outcome<Photo> {
+    override suspend fun findPhoto(): Outcome<Photo> {
+        val id = (navigationPayloadRepository.payload as? NavigationPayload.DetailPayload)?.id ?: return Outcome.Error()
         val outcome = photosRepository.photos()
         val photos = (outcome as? Outcome.Success)
         val selected = photos?.value?.find { id == it.id }

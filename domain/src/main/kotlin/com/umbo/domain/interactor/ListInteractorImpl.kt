@@ -1,9 +1,6 @@
 package com.umbo.domain.interactor
 
-import com.umbo.data.ListInteractor
-import com.umbo.data.Outcome
-import com.umbo.data.Photo
-import com.umbo.data.PhotosRepository
+import com.umbo.data.*
 
 class ListInteractorImpl(
     private val repository: PhotosRepository
@@ -11,5 +8,11 @@ class ListInteractorImpl(
 
     override suspend fun photos(): Outcome<List<Photo>> {
         return repository.photos(false)
+    }
+
+    override suspend fun navigationPayload(id: Int): Outcome<NavigationPayload> {
+        return (repository.photos(true) as? Outcome.Success)?.value?.find { it.id == id }?.let {
+            Outcome.Success(NavigationPayload.DetailPayload(it.id))
+        } ?: Outcome.Error()
     }
 }

@@ -2,6 +2,7 @@ package com.umbo.skeleton.di
 
 import androidx.lifecycle.ViewModel
 import com.umbo.data.DetailInteractor
+import com.umbo.data.NavigationPayloadRepository
 import com.umbo.di.ViewModelKey
 import com.umbo.di.scope.FragmentScope
 import com.umbo.domain.interactor.DetailInteractorImpl
@@ -17,8 +18,11 @@ class DetailFragmentModule {
 
     @Provides
     @FragmentScope
-    fun provideDetailInteractor(photosRepository: PhotosRepository): DetailInteractor =
-        DetailInteractorImpl(photosRepository)
+    fun provideDetailInteractor(
+        photosRepository: PhotosRepository,
+        navigationPayloadRepository: NavigationPayloadRepository
+    ): DetailInteractor =
+        DetailInteractorImpl(photosRepository, navigationPayloadRepository)
 
     @Module
     interface Bind {

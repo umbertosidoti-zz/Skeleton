@@ -22,7 +22,6 @@ class DetailFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val viewModel = viewModelProvider.of(this).get(DetailViewModel::class.java)
-        viewModel.payload = payload as? Int
         viewModel.liveData.observe(viewLifecycleOwner, Observer { outcome ->
 
             when(outcome) {
