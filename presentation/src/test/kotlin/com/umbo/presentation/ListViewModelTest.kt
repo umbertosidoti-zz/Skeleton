@@ -108,7 +108,7 @@ class ListViewModelTest {
         val observer = androidx.lifecycle.Observer<Outcome<List<PhotoViewState>>> {
             viewstate = it
         }
-        viewModel.liveData.observeForever (observer)
+        viewModel.liveData.observeForever(observer)
 
         //Given
         viewModel.onItemClick(1)
