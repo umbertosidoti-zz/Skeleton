@@ -2,6 +2,7 @@ package com.umbo.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.umbo.data.*
@@ -76,13 +77,13 @@ class ListViewModelTest {
     }
 
     @Test
-    fun testNavigation() {
+    fun testNavigationSuccess() {
 
         val payload = DetailPayload(1)
 
         //Given
         runBlocking {
-            whenever(listInteractor.navigationPayload(anyInt())).thenReturn(Outcome.Success(payload))
+            whenever(listInteractor.navigationPayload(1)).thenReturn(Outcome.Success(payload))
         }
 
         //Given
@@ -90,5 +91,22 @@ class ListViewModelTest {
 
         //Then
         verify(navigator).routeTo(NavigationCommand(Destination.DETAIL, payload))
+    }
+
+    @Test
+    fun testNavigationError() {
+
+        val payload = DetailPayload(1)
+
+        //Given
+        runBlocking {
+            whenever(listInteractor.navigationPayload(1)).thenReturn(Outcome.Error())
+        }
+
+        //Given
+        viewModel.onItemClick(1)
+
+        //Then
+        verify(navigator, never()).routeTo(any())
     }
 }
