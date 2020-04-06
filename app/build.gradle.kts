@@ -1,3 +1,7 @@
+import java.io.FileInputStream
+import java.util.*
+
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -5,9 +9,14 @@ plugins {
     id("kotlin-android-extensions")
 }
 
-val key: String = "\"m2i4v9UexChAuvBANfiaPJ3K_3mPFhhCBcKUuWHvlUM\""
 
-android {
+val apikeyPropertiesFile = project.file("apikey.properties")
+val fis = FileInputStream(apikeyPropertiesFile)
+val prop = Properties()
+prop.load(fis)
+val key: String = prop.getProperty("UNSPLASH_CLIENT_KEY")
+
+    android {
     compileSdkVersion(AndroidSdk.compile)
     buildToolsVersion(AndroidSdk.buildTools)
     defaultConfig {
