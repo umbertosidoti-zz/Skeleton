@@ -14,9 +14,9 @@ val apikeyPropertiesFile = project.file("apikey.properties")
 val fis = FileInputStream(apikeyPropertiesFile)
 val prop = Properties()
 prop.load(fis)
-val key: String = prop.getProperty("UNSPLASH_CLIENT_KEY")
+val unsplashKey: String = prop.getProperty("UNSPLASH_CLIENT_KEY")
 
-    android {
+android {
     compileSdkVersion(AndroidSdk.compile)
     buildToolsVersion(AndroidSdk.buildTools)
     defaultConfig {
@@ -30,10 +30,10 @@ val key: String = prop.getProperty("UNSPLASH_CLIENT_KEY")
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            buildConfigField("String", "unsplashKey", key)
+            buildConfigField("String", "unsplashKey", unsplashKey)
         }
         getByName("debug") {
-            buildConfigField("String", "unsplashKey", key)
+            buildConfigField("String", "unsplashKey", unsplashKey)
         }
     }
 
