@@ -23,7 +23,7 @@ class MainActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_main)
         setNavigationController()
         val viewModel = viewModelProvider.of(this).get(NavigationViewModel::class.java)
-        viewModel.navigationAction.observe(this, Observer {
+        viewModel.liveData.observe(this, Observer {
             router.routeTo(it)
         })
     }

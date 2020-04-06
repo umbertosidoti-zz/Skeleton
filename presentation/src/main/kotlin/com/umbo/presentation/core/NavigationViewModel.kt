@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 class NavigationViewModel @Inject constructor(private val navigator: Navigator) : ViewModel() {
 
-    val navigationAction = SingleLiveEvent<NavigationCommand>()
+    val liveData = SingleLiveEvent<NavigationCommand>()
 
     init {
         navigator.listener = {
-            navigationAction.postValue(it)
+            liveData.postValue(it)
         }
     }
 
