@@ -9,11 +9,8 @@ plugins {
     id("kotlin-android-extensions")
 }
 
-
-val apikeyPropertiesFile = project.file("apikey.properties")
-val fis = FileInputStream(apikeyPropertiesFile)
 val prop = Properties()
-prop.load(fis)
+prop.load(FileInputStream(project.file("apikey.properties")))
 val unsplashKey: String = prop.getProperty("UNSPLASH_CLIENT_KEY")
 
 android {
