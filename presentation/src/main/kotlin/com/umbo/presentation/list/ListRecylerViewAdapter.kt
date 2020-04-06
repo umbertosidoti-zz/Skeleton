@@ -37,14 +37,16 @@ class ListRecylerViewAdapter(private val imageLoader: ImageLoader) : RecyclerVie
 
     override fun onBindViewHolder(holder: ListAdapterViewHolder, position: Int) {
         with(holder){
-            title.text = photos[position].title
+            title.text = photos[position].description
             imageLoader.load(photos[position].url, icon)
+            user.text = photos[position].userName
         }
     }
 
     inner class ListAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val icon: ImageView = itemView.listItemIcon
         val title: TextView = itemView.listItemTitle
+        val user : TextView = itemView.listItemUser
         init {
             itemView.setOnClickListener {
                 onItemClick?.invoke(photos[adapterPosition].id)

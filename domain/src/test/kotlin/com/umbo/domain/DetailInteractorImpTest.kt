@@ -80,6 +80,6 @@ class DetailInteractorImpTest {
         //Then
         val photo = (result as? Outcome.Success)?.value
         assertNotNull(photo)
-        assertEquals(photo?.title, "success")
+        assertEquals(photo?.description, "success")
     }
 }

@@ -8,5 +8,6 @@ data class NetworkPhoto(
     @field:Json(name = "height") val height: Int?,
     @field:Json(name = "description") val description: String?,
     @field:Json(name = "likes") val likes: Int?,
-    @field:Json(name = "urls") val urls: NetworkUrls?
+    @field:Json(name = "urls") val urls: NetworkUrls?,
+    @field:Json(name = "user") val user: NetworkUser?
 )

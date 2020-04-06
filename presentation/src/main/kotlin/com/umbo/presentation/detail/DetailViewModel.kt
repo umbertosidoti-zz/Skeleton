@@ -20,7 +20,7 @@ class DetailViewModel @Inject constructor(
                 is Outcome.Success -> postValue(
                     Outcome.Success(
                         DetailViewState(
-                            outcome.value.title,
+                            outcome.value.description ?: "empty",
                             outcome.value.url,
                             "${outcome.value.width} x ${outcome.value.height}"
                         )

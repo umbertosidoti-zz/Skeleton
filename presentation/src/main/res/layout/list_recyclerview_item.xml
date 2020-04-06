@@ -1,20 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              xmlns:tools="http://schemas.android.com/tools"
-        android:padding="4dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="4dp">
+
     <ImageView
-            android:id="@+id/listItemIcon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"/>
-    <TextView
-            android:id="@+id/listItemTitle"
-            android:gravity="center_vertical"
+        android:id="@+id/listItemIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            tools:text="text"
+            android:gravity="top"
+            android:text="@string/list_username_label"
+            android:textStyle="bold"
+            tools:text="user:" />
+
+        <TextView
+            android:id="@+id/listItemUser"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="top"
+            tools:text="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="top"
+            android:text="@string/list_description_label"
+            android:textStyle="bold"
+            tools:text="description:" />
+
+        <TextView
+            android:id="@+id/listItemTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="top"
+            tools:text="text" />
+    </LinearLayout>
 </LinearLayout>

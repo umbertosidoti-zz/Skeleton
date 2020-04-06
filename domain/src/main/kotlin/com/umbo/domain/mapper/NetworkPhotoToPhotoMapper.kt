@@ -9,9 +9,10 @@ class NetworkPhotoToPhotoMapper : Mapper<NetworkPhoto, Photo?> {
         val id = input.id ?: return null
         val width = input.width ?: return null
         val height = input.height ?: return null
-        val title = input.description ?: ""
+        val description = input.description
         val thumb = input.urls?.thumb ?: ""
         val url = input.urls?.small ?: ""
-        return Photo(id, width, height, title, url, thumb)
+        val user = input.user?.username ?: ""
+        return Photo(id, user, width, height, description, url, thumb)
     }
 }

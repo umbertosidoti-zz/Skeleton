@@ -73,7 +73,7 @@ class ListViewModelTest {
 
         //Then
         Assert.assertTrue(outcome is Outcome.Success)
-        Assert.assertTrue(value?.get(0)?.title ?: "" == "success")
+        Assert.assertTrue(value?.get(0)?.description ?: "" == "success")
     }
 
     @Test

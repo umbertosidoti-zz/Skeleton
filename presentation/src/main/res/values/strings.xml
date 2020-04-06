@@ -3,4 +3,6 @@
     <string name="detail_title_label">Title</string>
     <string name="detail_url_label">Url</string>
     <string name="detail_album_label">Size</string>
+    <string name="list_username_label">User:</string>
+    <string name="list_description_label">Description:</string>
 </resources>
