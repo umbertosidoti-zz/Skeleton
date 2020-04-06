@@ -37,8 +37,8 @@ class DetailFragment : BaseFragment() {
 
     private fun handleSuccess(viewState: DetailViewState) {
         imageLoader.load(viewState.url, detailImage)
-        detailTitle.text = viewState.title
+        detailDescription.text = viewState.title
         detailUrl.text = viewState.url
-        detailAlbum.text = viewState.size
+        detailSize.text = viewState.size
     }
 }

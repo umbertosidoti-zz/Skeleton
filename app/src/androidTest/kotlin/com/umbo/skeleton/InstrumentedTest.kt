@@ -20,14 +20,15 @@ class InstrumentedTest {
         whileOnListScreen {
             shouldSeeLoading()
             shouldSeeListResults()
-            Thread.sleep(1000)
+            Thread.sleep(500)
             tapOnElement(0)
         }
 
         whileOnDetailScreen {
-            shouldSeeTitle("empty")
-            shouldSeeAlbum("1")
-            shouldSeeUrl("https://via.placeholder.com/600/92c952")
+            shouldSeeTitle()
+            shouldSeeAlbum()
+            shouldSeeUrl()
+            shouldSeeImage()
             tapBack()
         }
 

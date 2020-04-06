@@ -1,22 +1,29 @@
 package com.umbo.skeleton.pages
 
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.agoda.kakao.screen.Screen.Companion.onScreen
 
 class DetailPage {
 
-    fun shouldSeeTitle(text: String) {
+    fun shouldSeeTitle() {
         onDetailScreen {
-            title {
-                matches { withText(text) }
+            description {
+                isDisplayed()
             }
         }
     }
 
-    fun shouldSeeUrl(text: String) {
+    fun shouldSeeImage() {
+        onDetailScreen {
+            image {
+                isDisplayed()
+            }
+        }
+    }
+
+    fun shouldSeeUrl() {
         onDetailScreen {
             url {
-                matches { withText(text) }
+                isDisplayed()
             }
         }
     }
@@ -27,10 +34,10 @@ class DetailPage {
         }
     }
 
-    fun shouldSeeAlbum(text: String) {
+    fun shouldSeeAlbum() {
         onDetailScreen {
             album {
-                matches { withText(text) }
+                isDisplayed()
             }
         }
     }
