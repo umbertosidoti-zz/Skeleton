@@ -12,4 +12,8 @@ open class SkeletonApp : DaggerApplication() {
             .application(this)
             .build()
     }
+
+    override fun onCreate() {
+        super.onCreate()
+    }
 }

@@ -7,5 +7,5 @@ sealed class NavigationPayload
 object Empty: NavigationPayload()
 
 @Serializable
-data class DetailPayload(val id: Int): NavigationPayload()
+data class DetailPayload(val id: String): NavigationPayload()
 

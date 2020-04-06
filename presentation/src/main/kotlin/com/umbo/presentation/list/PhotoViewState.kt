@@ -1,4 +1,4 @@
 package com.umbo.presentation.list
 
 
-data class PhotoViewState(val id: Int, val title: String, val url: String)
+data class PhotoViewState(val id: String, val title: String, val url: String)

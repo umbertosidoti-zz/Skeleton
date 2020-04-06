@@ -19,7 +19,6 @@ import org.junit.Test
 import org.junit.rules.TestRule
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import java.util.*
 
 class ListViewModelTest {
 

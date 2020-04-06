@@ -22,7 +22,7 @@ class DetailViewModel @Inject constructor(
                         DetailViewState(
                             outcome.value.title,
                             outcome.value.url,
-                            outcome.value.albumId.toString()
+                            "${outcome.value.width} x ${outcome.value.height}"
                         )
                     )
                 )

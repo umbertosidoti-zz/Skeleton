@@ -1,8 +1,9 @@
 package com.umbo.data
 
 data class Photo(
-    val albumId: Int,
-    val id: Int,
+    val id: String,
+    val width: Int,
+    val height: Int,
     val title: String,
     val url: String,
     val thumbnailUrl: String

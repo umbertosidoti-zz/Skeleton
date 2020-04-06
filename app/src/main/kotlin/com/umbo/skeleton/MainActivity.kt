@@ -22,10 +22,12 @@ class MainActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setNavigationController()
-        val viewModel = viewModelProvider.of(this).get(NavigationViewModel::class.java)
-        viewModel.liveData.observe(this, Observer {
+
+        val navigationViewModel = viewModelProvider.of(this).get(NavigationViewModel::class.java)
+        navigationViewModel.liveData.observe(this, Observer {
             router.routeTo(it)
         })
+
     }
 
     private fun setNavigationController() {

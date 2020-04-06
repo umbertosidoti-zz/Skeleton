@@ -53,9 +53,12 @@ dependencies {
     implementation(Libraries.okhttp)
     implementation(Libraries.retrofit)
     implementation(Libraries.moshi)
+    implementation(Libraries.glide)
 
     kapt(Libraries.daggerProcessor)
     kapt(Libraries.daggerCompile)
+
+    kapt(Libraries.glideCompiler)
 
     implementation(AndroidTestLibraries.espressoIdling)
 

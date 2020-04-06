@@ -38,6 +38,9 @@ dependencies {
     implementation(Libraries.kotlin)
     implementation(AndroidLibraries.androidxAppcompat)
     implementation(Libraries.glide)
+    implementation(Libraries.glideIntegration)
+    kapt(Libraries.glideCompiler)
+
 
     testImplementation(TestLibraries.junit)
 }

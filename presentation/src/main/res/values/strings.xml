@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_title_label">Title</string>
+    <string name="detail_url_label">Url</string>
+    <string name="detail_album_label">Size</string>
+</resources>

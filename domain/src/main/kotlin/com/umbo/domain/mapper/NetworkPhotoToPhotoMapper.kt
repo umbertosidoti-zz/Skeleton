@@ -7,10 +7,11 @@ import com.umbo.network_interface.NetworkPhoto
 class NetworkPhotoToPhotoMapper : Mapper<NetworkPhoto, Photo?> {
     override fun map(input: NetworkPhoto): Photo? {
         val id = input.id ?: return null
-        val albumId = input.albumId ?: return null
-        val title = input.title ?: ""
-        val thumb = input.thumbnailUrl ?: ""
-        val url = input.url ?: ""
-        return Photo(albumId, id, title, url, thumb)
+        val width = input.width ?: return null
+        val height = input.height ?: return null
+        val title = input.description ?: ""
+        val thumb = input.urls?.thumb ?: ""
+        val url = input.urls?.small ?: ""
+        return Photo(id, width, height, title, url, thumb)
     }
 }

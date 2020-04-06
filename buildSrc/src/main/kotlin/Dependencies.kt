@@ -50,6 +50,8 @@ object Libraries {
     val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.moshi}"
     val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    val glideIntegration = "com.github.bumptech.glide:okhttp3-integration:${Versions.glide}"
     val kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.kotlinSerialization}"
 }
 

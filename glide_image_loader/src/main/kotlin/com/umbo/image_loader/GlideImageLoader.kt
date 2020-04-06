@@ -7,10 +7,8 @@ import com.umbo.data.ImageLoader
 
 class GlideImageLoader: ImageLoader {
 
-    private val TIMEOUT = 10000
-
     override fun load(url: String, imageView: ImageView, placeHolder: Int?) {
-        Glide.with(imageView).applyDefaultRequestOptions(RequestOptions().timeout(TIMEOUT))
+        Glide.with(imageView)
             .load(url)
             .centerCrop()
             .placeholder(placeHolder?: R.drawable.placeholder)

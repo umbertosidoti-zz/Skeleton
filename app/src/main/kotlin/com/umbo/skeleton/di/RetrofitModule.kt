@@ -22,8 +22,8 @@ object RetrofitModule {
         val service = Retrofit.Builder()
             .client(
                 OkHttpClient.Builder()
-                .readTimeout(60, TimeUnit.SECONDS)
-                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .connectTimeout(10, TimeUnit.SECONDS)
                 .build())
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())

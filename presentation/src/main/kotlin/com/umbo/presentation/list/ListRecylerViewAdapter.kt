@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.list_recyclerview_item.view.*
 class ListRecylerViewAdapter(private val imageLoader: ImageLoader) : RecyclerView.Adapter<ListRecylerViewAdapter.ListAdapterViewHolder>() {
 
     private val photos: MutableList<PhotoViewState> = mutableListOf()
-    var onItemClick: ((Int) -> Unit)? = null
+    var onItemClick: ((String) -> Unit)? = null
 
     fun addPhotos(photos: List<PhotoViewState>){
         this.photos.clear()

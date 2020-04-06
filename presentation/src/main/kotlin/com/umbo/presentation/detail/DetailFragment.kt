@@ -39,6 +39,6 @@ class DetailFragment : BaseFragment() {
         imageLoader.load(viewState.url, detailImage)
         detailTitle.text = viewState.title
         detailUrl.text = viewState.url
-        detailAlbum.text = viewState.album
+        detailAlbum.text = viewState.size
     }
 }

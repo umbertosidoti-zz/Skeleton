@@ -27,7 +27,7 @@ class ListViewModel @Inject constructor(
         }
     }
 
-    fun onItemClick(id: Int) {
+    fun onItemClick(id: String) {
         doAsync {
             (interactor.navigationPayload(id) as? Outcome.Success)?.value?.let {
                 routeTo(NavigationCommand(Destination.DETAIL, it))

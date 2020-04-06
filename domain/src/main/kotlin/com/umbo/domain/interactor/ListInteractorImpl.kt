@@ -10,7 +10,7 @@ class ListInteractorImpl(
         return repository.photos(false)
     }
 
-    override suspend fun navigationPayload(id: Int): Outcome<DetailPayload> {
+    override suspend fun navigationPayload(id: String): Outcome<DetailPayload> {
         return (repository.photos(true) as? Outcome.Success)?.value?.find { it.id == id }?.let {
             Outcome.Success(DetailPayload(it.id))
         } ?: Outcome.Error()
