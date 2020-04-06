@@ -22,7 +22,6 @@ class ListFragment : BaseFragment() {
     @Inject
     lateinit var viewModelProvider: ViewModelProvidersWrapper
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 

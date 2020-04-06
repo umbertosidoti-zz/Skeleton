@@ -12,8 +12,7 @@ class DetailViewModel @Inject constructor(
     @IO dispatcher: CoroutineDispatcher,
     navigator: Navigator,
     private val interactor: DetailInteractor
-) :
-    BaseViewModelLiveData<Outcome<DetailViewState>>(dispatcher, navigator) {
+) : BaseViewModelLiveData<Outcome<DetailViewState>>(dispatcher, navigator) {
 
     override fun onStartObserve() {
         doAsync {

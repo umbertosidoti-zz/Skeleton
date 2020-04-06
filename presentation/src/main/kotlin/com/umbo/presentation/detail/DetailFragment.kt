@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.detail_fragment.*
 import javax.inject.Inject
 
 class DetailFragment : BaseFragment() {
+
     override val layoutId: Int = com.umbo.presentation.R.layout.detail_fragment
 
     @Inject
@@ -23,12 +24,10 @@ class DetailFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         val viewModel = viewModelProvider.of(this).get(DetailViewModel::class.java)
         viewModel.liveData.observe(viewLifecycleOwner, Observer { outcome ->
-
             when(outcome) {
                 is Outcome.Success -> handleSuccess(outcome.value)
                 is Outcome.Error -> handleError()
             }
-
         })
     }
 

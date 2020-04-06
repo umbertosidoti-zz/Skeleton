@@ -8,8 +8,7 @@ class DetailInteractorImpl(
 ) : DetailInteractor {
 
     override suspend fun findPhoto(): Outcome<Photo> {
-        val id =
-            (navigationPayloadRepository.payload as? DetailPayload)?.id ?: return Outcome.Error()
+        val id = (navigationPayloadRepository.payload as? DetailPayload)?.id ?: return Outcome.Error()
         val outcome = photosRepository.photos()
         val photos = (outcome as? Outcome.Success)
         val selected = photos?.value?.find { id == it.id }

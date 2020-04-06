@@ -10,8 +10,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-abstract class BaseViewModelLiveData<T>(protected val dispatcher: CoroutineDispatcher, private val navigator: Navigator) :
-    ViewModel() {
+abstract class BaseViewModelLiveData<T>(
+    private val dispatcher: CoroutineDispatcher,
+    private val navigator: Navigator
+) : ViewModel() {
 
     private val mutableLiveData: MutableLiveData<T> by lazy {
         MutableLiveData<T>().also {

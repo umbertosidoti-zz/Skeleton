@@ -12,18 +12,9 @@ abstract class BaseFragment: DaggerFragment() {
 
     abstract val layoutId: Int
 
-    var payload: Serializable? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val bundle = this.arguments
-        if (bundle != null) {
-            payload = bundle.getSerializable(Router.PAYLOAD_KEY)
-        }
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(layoutId, container, false)

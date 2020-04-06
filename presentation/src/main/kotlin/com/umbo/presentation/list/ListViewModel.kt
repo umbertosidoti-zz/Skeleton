@@ -18,9 +18,7 @@ class ListViewModel @Inject constructor(
         doAsync {
             val viewState = when (val result = interactor.photos()) {
                 is Outcome.Success -> Outcome.Success(result.value.map {
-                    postToViewStateMapper.map(
-                        it
-                    )
+                    postToViewStateMapper.map(it)
                 })
                 is Outcome.Error -> Outcome.Error()
             }
@@ -32,10 +30,7 @@ class ListViewModel @Inject constructor(
     fun onItemClick(id: Int) {
         doAsync {
             (interactor.navigationPayload(id) as? Outcome.Success)?.value?.let {
-                routeTo(NavigationCommand(
-                    Destination.DETAIL,
-                    it
-                ))
+                routeTo(NavigationCommand(Destination.DETAIL, it))
             } ?: postValue(Outcome.Error())
         }
     }
