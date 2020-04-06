@@ -1,4 +1,4 @@
-package com.umbo.skeleton.di.test
+package com.umbo.skeleton.di
 
 import android.app.Application
 import com.umbo.skeleton.di.RetrofitModule

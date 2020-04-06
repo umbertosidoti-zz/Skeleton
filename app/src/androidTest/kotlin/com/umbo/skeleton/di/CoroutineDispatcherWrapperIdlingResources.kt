@@ -1,4 +1,4 @@
-package com.umbo.skeleton.di.test
+package com.umbo.skeleton.di
 
 import kotlinx.coroutines.*
 import java.lang.Runnable

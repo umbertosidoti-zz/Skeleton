@@ -86,4 +86,5 @@ dependencies {
         exclude(group = "com.android.support", module = "support-v4")
         exclude(module = "recyclerview-v7")
     }
+    kaptAndroidTest(Libraries.daggerCompile)
 }

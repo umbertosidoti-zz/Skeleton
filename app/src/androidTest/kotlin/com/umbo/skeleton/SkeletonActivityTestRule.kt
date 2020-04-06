@@ -3,7 +3,7 @@ package com.umbo.skeleton
 import android.app.Activity
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.rule.ActivityTestRule
-import com.umbo.skeleton.di.test.EspressoIdlingResource
+import com.umbo.skeleton.di.EspressoIdlingResource
 
 class SkeletonActivityTestRule<T : Activity>(
     activityClass: Class<T>,

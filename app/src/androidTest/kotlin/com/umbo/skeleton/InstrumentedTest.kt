@@ -20,12 +20,12 @@ class InstrumentedTest {
         whileOnListScreen {
             shouldSeeLoading()
             shouldSeeListResults()
-            Thread.sleep(300)
+            Thread.sleep(1000)
             tapOnElement(0)
         }
 
         whileOnDetailScreen {
-            shouldSeeTitle("accusamus beatae ad facilis cum similique qui sunt")
+            shouldSeeTitle("empty")
             shouldSeeAlbum("1")
             shouldSeeUrl("https://via.placeholder.com/600/92c952")
             tapBack()

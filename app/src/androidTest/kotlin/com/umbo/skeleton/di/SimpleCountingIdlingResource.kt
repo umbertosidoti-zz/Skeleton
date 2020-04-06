@@ -1,4 +1,4 @@
-package com.umbo.skeleton.di.test
+package com.umbo.skeleton.di
 
 import androidx.test.espresso.IdlingResource
 import java.util.concurrent.atomic.AtomicInteger

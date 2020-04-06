@@ -1,4 +1,4 @@
-package com.umbo.skeleton.di.test
+package com.umbo.skeleton.di
 
 import com.umbo.skeleton.SkeletonApp
 import dagger.android.AndroidInjector
