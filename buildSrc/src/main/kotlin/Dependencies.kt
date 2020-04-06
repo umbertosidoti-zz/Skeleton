@@ -1,5 +1,5 @@
 object AndroidSdk {
-    const val min = 21
+    const val min = 24
     const val compile = 29
     const val target = compile
     const val buildTools = "29.0.2"
