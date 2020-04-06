@@ -5,14 +5,12 @@ import com.umbo.network_interface.NetworkPhoto
 import com.umbo.network_interface.NetworkService
 
 
-class RetrofitNetworkServiceImpl(private val endPoint: RetrofitEndPoint) :
+class RetrofitNetworkServiceImpl(private val endPoint: RetrofitEndPoint, private val clientKey: String) :
     NetworkService {
-
-    private val client = "m2i4v9UexChAuvBANfiaPJ3K_3mPFhhCBcKUuWHvlUM"
 
     override suspend fun photos(): NetworkOutcome<List<NetworkPhoto>> {
 
-        val response = endPoint.getPhotos(client)
+        val response = endPoint.getPhotos(clientKey)
         val result = if (response.isSuccessful) {
             response.body()
         } else {

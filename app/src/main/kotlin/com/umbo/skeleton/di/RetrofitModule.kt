@@ -19,6 +19,8 @@ object RetrofitModule {
     @Provides
     @JvmStatic
     fun provideRetrofitRepo(): NetworkService {
+        val client = "m2i4v9UexChAuvBANfiaPJ3K_3mPFhhCBcKUuWHvlUM"
+
         val service = Retrofit.Builder()
             .client(
                 OkHttpClient.Builder()
@@ -29,6 +31,6 @@ object RetrofitModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .build().create(RetrofitEndPoint::class.java)
 
-        return RetrofitNetworkServiceImpl(service)
+        return RetrofitNetworkServiceImpl(service, client)
     }
 }
