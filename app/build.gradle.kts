@@ -5,6 +5,8 @@ plugins {
     id("kotlin-android-extensions")
 }
 
+val key: String = "\"m2i4v9UexChAuvBANfiaPJ3K_3mPFhhCBcKUuWHvlUM\""
+
 android {
     compileSdkVersion(AndroidSdk.compile)
     buildToolsVersion(AndroidSdk.buildTools)
@@ -19,6 +21,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+            buildConfigField("String", "unsplashKey", key)
+        }
+        getByName("debug") {
+            buildConfigField("String", "unsplashKey", key)
         }
     }
 

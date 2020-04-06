@@ -4,6 +4,7 @@ import com.umbo.network.RetrofitEndPoint
 import com.umbo.network.RetrofitEndPoint.Companion.BASE_URL
 import com.umbo.network.RetrofitNetworkServiceImpl
 import com.umbo.network_interface.NetworkService
+import com.umbo.skeleton.BuildConfig
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -19,8 +20,6 @@ object RetrofitModule {
     @Provides
     @JvmStatic
     fun provideRetrofitRepo(): NetworkService {
-        val client = "m2i4v9UexChAuvBANfiaPJ3K_3mPFhhCBcKUuWHvlUM"
-
         val service = Retrofit.Builder()
             .client(
                 OkHttpClient.Builder()
@@ -31,6 +30,6 @@ object RetrofitModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .build().create(RetrofitEndPoint::class.java)
 
-        return RetrofitNetworkServiceImpl(service, client)
+        return RetrofitNetworkServiceImpl(service, BuildConfig.unsplashKey)
     }
 }
