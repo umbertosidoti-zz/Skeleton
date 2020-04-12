@@ -14,6 +14,7 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         SkeletonModule::class,
+        NetworkModule::class,
         RetrofitModule::class,
         CoroutinesModule::class,
         GlideModule::class,

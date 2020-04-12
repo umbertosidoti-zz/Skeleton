@@ -34,11 +34,13 @@ class DetailFragment : BaseFragment() {
     }
 
     private fun handleError() {
+        detailContainer.visibility = View.GONE
         detailLoading.visibility = View.GONE
         detailError.visibility = View.VISIBLE
     }
 
     private fun handleSuccess(viewState: DetailViewState) {
+        detailContainer.visibility = View.VISIBLE
         detailError.visibility = View.GONE
         detailLoading.visibility = View.GONE
         imageLoader.load(viewState.url, detailImage)

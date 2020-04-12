@@ -19,13 +19,9 @@ object RetrofitModule {
     @Singleton
     @Provides
     @JvmStatic
-    fun provideRetrofitRepo(): NetworkService {
+    fun provideRetrofitRepo(httpClient: OkHttpClient): NetworkService {
         val service = Retrofit.Builder()
-            .client(
-                OkHttpClient.Builder()
-                .readTimeout(10, TimeUnit.SECONDS)
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .build())
+            .client(httpClient)
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build().create(RetrofitEndPoint::class.java)
