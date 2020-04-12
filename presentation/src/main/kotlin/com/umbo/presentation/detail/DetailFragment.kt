@@ -1,6 +1,7 @@
 package com.umbo.presentation.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import com.umbo.data.Outcome
@@ -24,6 +25,7 @@ class DetailFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        Log.e("UMBO", "OnActivity created")
         val viewModel = viewModelProvider.of(this).get(DetailViewModel::class.java)
         viewModel.liveData.observe(viewLifecycleOwner, Observer { outcome ->
             when(outcome) {

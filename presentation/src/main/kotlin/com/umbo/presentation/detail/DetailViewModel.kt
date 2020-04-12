@@ -1,5 +1,6 @@
 package com.umbo.presentation.detail
 
+import android.util.Log
 import com.umbo.data.DetailInteractor
 import com.umbo.data.Navigator
 import com.umbo.data.Outcome
@@ -15,6 +16,7 @@ class DetailViewModel @Inject constructor(
 ) : BaseViewModelLiveData<Outcome<DetailViewState>>(dispatcher, navigator) {
 
     override fun onStartObserve() {
+        Log.e("UMBO", "Find photo")
         doAsync {
             when (val outcome = interactor.findPhoto()) {
                 is Outcome.Success -> postValue(

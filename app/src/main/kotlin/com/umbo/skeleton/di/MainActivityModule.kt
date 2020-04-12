@@ -12,12 +12,14 @@ import com.umbo.domain.NavigatorImpl
 import com.umbo.domain.PhotosStorageImpl
 import com.umbo.domain.repository.NavigationPayloadRepositoryImpl
 import com.umbo.presentation.core.NavigationViewModel
-import com.umbo.presentation.detail.DetailViewModel
+import com.umbo.skeleton.instancestate.InstanceStateHandler
+import com.umbo.skeleton.instancestate.InstanceStateHandlerImpl
 import com.umbo.skeleton.routing.RouterImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
+import kotlinx.serialization.json.Json
 
 @Module(includes = [
     MainActivityModule.Bind::class,
@@ -35,12 +37,17 @@ class MainActivityModule {
 
     @ActivityScope
     @Provides
-    fun provideRouter(navigationPayloadRepository: NavigationPayloadRepository): Router = RouterImpl(navigationPayloadRepository)
-
+    fun provideRouter(navigationPayloadRepository: NavigationPayloadRepository)
+            : Router = RouterImpl(navigationPayloadRepository)
 
     @ActivityScope
     @Provides
     fun provideNavigator(): Navigator = NavigatorImpl()
+
+    @ActivityScope
+    @Provides
+    fun provideInstanceStateHandler(json: Json, navigationPayloadRepository: NavigationPayloadRepository)
+            : InstanceStateHandler = InstanceStateHandlerImpl(json, navigationPayloadRepository)
 
     @Module
     interface Bind {

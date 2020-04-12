@@ -16,6 +16,7 @@ import javax.inject.Singleton
         SkeletonModule::class,
         NetworkModule::class,
         RetrofitModule::class,
+        JsonModule::class,
         CoroutinesModule::class,
         GlideModule::class,
         ActivitiesModule::class,

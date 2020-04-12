@@ -7,6 +7,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-android-extensions")
+    kotlin("plugin.serialization") version Plugins.kotlinSerialization
 }
 
 val prop = Properties()
@@ -68,6 +69,7 @@ dependencies {
     implementation(Libraries.retrofit)
     implementation(Libraries.moshi)
     implementation(Libraries.glide)
+    implementation(Libraries.kotlinSerialization)
 
     kapt(Libraries.daggerProcessor)
     kapt(Libraries.daggerCompile)
