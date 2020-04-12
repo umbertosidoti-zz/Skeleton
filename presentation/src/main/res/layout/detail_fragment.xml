@@ -1,58 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".detail.DetailFragment">
 
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <ImageView
+            <ImageView
                 android:id="@+id/detailImage"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"/>
+                android:layout_height="300dp" />
 
-        <TextView
+            <TextView
+                style="@style/detail_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/detail_title_label"
-                style="@style/detail_label"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="24dp"
+                android:text="@string/detail_title_label" />
 
-        <TextView
+            <TextView
                 android:id="@+id/detailDescription"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
-        <TextView
+            <TextView
+                style="@style/detail_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/detail_url_label"
-                style="@style/detail_label"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="24dp"
+                android:text="@string/detail_url_label" />
 
-        <TextView
+            <TextView
                 android:id="@+id/detailUrl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
-        <TextView
+            <TextView
+                style="@style/detail_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/detail_album_label"
-                style="@style/detail_label"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="24dp"
+                android:text="@string/detail_album_label" />
 
-        <TextView
+            <TextView
                 android:id="@+id/detailSize"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <ProgressBar
+        android:id="@+id/detailLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"/>
 
-</ScrollView>
+    <ImageView
+        android:id="@+id/detailError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/opps"
+        android:visibility="gone" />
+</FrameLayout>

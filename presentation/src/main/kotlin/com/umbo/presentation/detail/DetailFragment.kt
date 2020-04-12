@@ -1,12 +1,14 @@
 package com.umbo.presentation.detail
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import com.umbo.data.Outcome
 import com.umbo.data.ImageLoader
 import com.umbo.di.ViewModelProvidersWrapper
 import com.umbo.presentation.core.BaseFragment
 import kotlinx.android.synthetic.main.detail_fragment.*
+import kotlinx.android.synthetic.main.list_fragment.*
 
 import javax.inject.Inject
 
@@ -32,10 +34,13 @@ class DetailFragment : BaseFragment() {
     }
 
     private fun handleError() {
-
+        detailLoading.visibility = View.GONE
+        detailError.visibility = View.VISIBLE
     }
 
     private fun handleSuccess(viewState: DetailViewState) {
+        detailError.visibility = View.GONE
+        detailLoading.visibility = View.GONE
         imageLoader.load(viewState.url, detailImage)
         detailDescription.text = viewState.title
         detailUrl.text = viewState.url
