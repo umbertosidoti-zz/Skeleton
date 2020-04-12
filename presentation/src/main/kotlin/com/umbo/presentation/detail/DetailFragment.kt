@@ -25,7 +25,6 @@ class DetailFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Log.e("UMBO", "OnActivity created")
         val viewModel = viewModelProvider.of(this).get(DetailViewModel::class.java)
         viewModel.liveData.observe(viewLifecycleOwner, Observer { outcome ->
             when(outcome) {

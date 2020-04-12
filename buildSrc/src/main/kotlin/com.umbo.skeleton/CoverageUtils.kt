@@ -127,7 +127,6 @@ object CoverageUtils {
 
     private fun Project.getTask(key: String, jacocoReport: JacocoReport, taskDescription: String): Task {
         return if (rootProject.tasks.findByPath(key) == null) {
-            println("UMBO NEW ROOT")
             rootProject.plugins.apply("jacoco")
             rootProject.configure<JacocoPluginExtension> {
                 toolVersion = "0.8.5"
@@ -147,7 +146,6 @@ object CoverageUtils {
                 }
             }
         } else {
-            println("UMBO ALREADY ROOT")
             rootProject.tasks.getByName(key, closureOf<JacocoReport> {
                 executionData.from(jacocoReport.executionData)
                 classDirectories.from(jacocoReport.classDirectories)

@@ -26,7 +26,6 @@ class InstanceStateHandlerImpl(private val json: Json, private val repository: N
             stringData?.let { data ->
                 val routerData: PayloadWrapper? = json.parse(PayloadWrapper.serializer(), data)
                 routerData?.let {
-                    Log.e("UMBO", "Restore data $routerData")
                     repository.updatePayload(it.payload)
                 }
             }
