@@ -6,7 +6,6 @@ import com.umbo.data.NavigationPayload
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
 import kotlinx.serialization.modules.SerializersModule
 import javax.inject.Singleton
 
