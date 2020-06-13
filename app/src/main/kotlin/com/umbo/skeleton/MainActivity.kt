@@ -40,6 +40,10 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun setNavigationController() {
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        val inflater = navController.navInflater
+        val graph = inflater.inflate(R.navigation.nav_graph)
+        navController.graph = graph
+
         router.setNavController(navController)
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
